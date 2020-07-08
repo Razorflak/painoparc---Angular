@@ -1,0 +1,33 @@
+
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+mat-card{
+  margin-top: 16px;
+  height:75vh;
+  justify-content: center;
+  align-items: center;
+}
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: red;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logoLogin {
+  max-width: 200px;
+}
