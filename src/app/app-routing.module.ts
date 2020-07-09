@@ -8,7 +8,7 @@ import { PagesModule } from './modules/home/pages/pages.module';
  * TODO: 2 autres module sans doute à prévoir pour l'Administration global et un autre pour les Commerces
  */
 const routes: Routes = [
-  {path: '**',
+  {path: '',
   loadChildren: () => import('./modules/home/pages/pages.module').then(m => m.PagesModule)}
 ];
 

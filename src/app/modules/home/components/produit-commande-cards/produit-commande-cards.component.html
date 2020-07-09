@@ -1,1 +1,46 @@
-<p>produit-commande-cards works!</p>
+<!--<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Baguette tradition</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src="/assets/img/Baguette_Tradition.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
+-->
+<mat-card class="cardProduit">
+  <mat-grid-list cols="4" rowHeight="20px">
+    <!--Image du produit-->
+    <mat-grid-tile [colspan]="1" [rowspan]="7" class="tileImg">
+      <img src="/assets/img/Baguette_Tradition.jpg" alt="Photo of a Shiba Inu">
+    </mat-grid-tile>
+    <!--Titre du produit-->
+    <mat-grid-tile [colspan]="3" [rowspan]="2" class="tileTitre">
+      <div class="divGridTile">
+        AAAAAAAAAAAAAAAA
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="2" class="tileDescription">
+      <div class="divGridTile">
+        Ceci est la descrition d'une baguette bien fraiche qui déchire sa race et j'espère que ce texte sera assez long pour faire plusieurs ligne sur la card
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="3" class="tileAction">
+      <div class="divGridTile">
+        <button class="actionButton">
+          <mat-icon class="action-icon">remove_circle</mat-icon>
+        </button>
+        <span>{{nbrProduit}}</span>
+        <button mat-fab class="actionButton">
+          <mat-icon class="">add_circle</mat-icon>
+        </button>
+      </div>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+</mat-card>
+

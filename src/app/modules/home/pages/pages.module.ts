@@ -1,3 +1,4 @@
+import { ComponentsModule } from './../components/components.module';
 import { Routes, RouterModule } from '@angular/router';
 import { ProduitsCommandePageComponent } from './produits-commande-page/produits-commande-page.component';
 import { CoreModule } from './../../../core/core.module';
@@ -9,7 +10,11 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 
 
+
 const yourRoutes: Routes = [
+  { path: '',  component: LoginPageComponent },
+  { path: 'login',  component: LoginPageComponent },
+  { path: 'commander',  component: ProduitsCommandePageComponent },
   { path: '**',  component: LoginPageComponent }
 ];
 
@@ -21,6 +26,7 @@ export const yourRouting = RouterModule.forChild(yourRoutes);
   ProduitsCommandePageComponent],
   imports: [
     CommonModule,
+    ComponentsModule,
     CoreModule,
     MatFormFieldModule,
     MatCardModule,
