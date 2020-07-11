@@ -1,3 +1,4 @@
+import { MaterialAngularModule } from './../../../material-angular/material-angular.module';
 import { ComponentsModule } from './../components/components.module';
 import { Routes, RouterModule } from '@angular/router';
 import { ProduitsCommandePageComponent } from './produits-commande-page/produits-commande-page.component';
@@ -31,6 +32,7 @@ export const yourRouting = RouterModule.forChild(yourRoutes);
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
+    MaterialAngularModule,
     yourRouting
   ],
   exports: [LoginPageComponent,

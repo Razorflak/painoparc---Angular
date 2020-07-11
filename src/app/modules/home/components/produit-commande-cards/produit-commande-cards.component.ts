@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { IProduit } from './../../../../core/interfaces/IProduit';
+import { Component, OnInit, Input } from '@angular/core';
 
 export interface Tile {
   color: string;
@@ -18,22 +19,24 @@ export interface Tile {
 export class ProduitCommandeCardsComponent implements OnInit {
 
 
-  tiles: Tile[] = [
-    // Image du produit
-    {text: 'Produit', cols: 1, rows: 3, color: 'lightblue'},
-    // Titre du produit
-    {text: 'Baguette tradition', cols: 3, rows: 1, color: 'lightgreen'},
-    // Description du produit
-    {text: 'Cecie est une putain de baguette qui rocks !', cols: 3, rows: 1, color: 'lightpink'},
-    // Action sur le produit
-    {text: 'La tu peux faire des trucs', cols: 3, rows: 1, color: '#DDBDF1'},
-  ];
-
-  nbrProduit: string;
+  test: string;
 
   constructor() { }
-
+  @Input() produit: IProduit;
   ngOnInit(): void {
-    this.nbrProduit = '100';
+    if (this.produit.Panier_Produit == null){
+      this.produit.Panier_Produit = {
+        nbrProduit: 0,
+        ProduitId: this.produit.id
+      }
+    }
+  }
+
+  onClickRemove(): void {
+    this.produit.Panier_Produit.nbrProduit -= 1;
+  }
+
+  onClickAdd(): void {
+    this.produit.Panier_Produit.nbrProduit += 1;
   }
 }

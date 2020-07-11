@@ -1,0 +1,6 @@
+<mat-card class="mainCard">
+    <button mat-raised-button color="primary" class="btnValidPanier">Valider mon panier</button>
+    <div class="divProduits">
+      <app-produit-panier *ngFor="let produit of lstProduitPanier" [produit] = "produit"></app-produit-panier>
+    </div>
+</mat-card>
