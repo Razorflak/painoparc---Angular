@@ -29,13 +29,13 @@
       </div>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="3" class="tileAction">
-      <div class="divGridTile">
-        <button class="actionButton">
-          <mat-icon class="action-icon">remove_circle</mat-icon>
+      <div class="divGridTile divAction">
+        <button mat-mini-fab color="primary" class="actionButton">
+          <mat-icon>remove</mat-icon>
         </button>
-        <span>{{nbrProduit}}</span>
-        <button mat-fab class="actionButton">
-          <mat-icon class="">add_circle</mat-icon>
+        <div class="nbrProduit">{{nbrProduit}}</div>
+        <button mat-mini-fab color="primary" class="actionButton">
+          <mat-icon>add</mat-icon>
         </button>
       </div>
     </mat-grid-tile>

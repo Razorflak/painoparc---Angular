@@ -34,6 +34,6 @@ export class ProduitCommandeCardsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.nbrProduit = '25';
+    this.nbrProduit = '100';
   }
 }

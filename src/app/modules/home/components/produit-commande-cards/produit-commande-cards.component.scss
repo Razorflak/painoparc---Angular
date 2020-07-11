@@ -1,45 +1,49 @@
 .cardProduit {
   max-width: 500px;
-  background-color: seagreen;
+  min-width: 500px;
   padding: 5px;
 }
 
 .tileImg {
-  background-color: sandybrown;
+}
+
+.tileImg img{
+  height: 100%;
 }
 
 .tileTitre {
-  background-color: violet;
+
+  font-size: x-large;
 }
 
 .divGridTile {
   width: 100%;
-  background-color: brown;
   display: flex;
+  margin-left: 10px;
   align-items: flex-start;
   align-items: center;
 }
 
 .tileDescription {
-  background-color: tomato;
+  font-size: small;
+  line-height: 12px;
 }
 
-.actionButton{
-  background-color: transparent;
-  border: transparent;
-  border-width: 0px;
-  transition: none !important;
-  box-shadow: none !important;
+
+.nbrProduit{
+  display: flex;
+  min-width: 75px;
+  justify-content: center;
 }
 
 .tileAction {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
   font-size: 40px;
-  background-color: steelblue;
-  vertical-align: middle;
 }
+
+.divAction{
+  margin-left: 20px;
+}
+
 
 .action-icon {
   height: 40px !important;
