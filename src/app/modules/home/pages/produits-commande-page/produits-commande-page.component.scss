@@ -1,27 +1,40 @@
 .content {
-  display: flex;
+  display:inline-flex;
   flex-direction: initial;
-  width: 100%;
-
-
-  background-color: aqua;
+  position: relative;
+  background-color: lightgray;
 }
 
 .divProduit {
-
-  min-width: 70%;
-  max-width: 70%;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  background-color: brown;
+  flex-flow: row wrap;
+  flex-grow: 1;
+
 }
+
+.divProduit app-produit-commande-cards {
+  width: 100%;
+  max-width: 500px;
+}
+
+
 
 .divPanier {
   height: 100%;
-  min-width: 30%;
-  max-width: 30%;
+  max-width: 500px;
   display: flex;
-  background-color: chartreuse;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+// Retrait de la parti panier pour les mobil
+@media (max-width : 770px) {
+  .divPanier {visibility: hidden;}
+  .divPanier {width: 0px;}
 }
 
 .divPanier app-panier-commande{

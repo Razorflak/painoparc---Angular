@@ -3,4 +3,11 @@
     <div class="divProduits">
       <app-produit-panier *ngFor="let produit of lstProduitPanier" [produit] = "produit"></app-produit-panier>
     </div>
+    <mat-divider></mat-divider>
+   <mat-grid-list cols="2" rowHeight="4:1">
+    <mat-grid-tile>Sous Total</mat-grid-tile>
+    <mat-grid-tile>2</mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+    <mat-grid-tile>4</mat-grid-tile>
+  </mat-grid-list>
 </mat-card>

@@ -14,7 +14,7 @@ export class ProduitsCommandePageComponent implements OnInit {
   lstProduit: Array<IProduit> = [{
     id: 1,
     commission: 0,
-    description: 'Ceci est une baguette genre classique',
+    description: 'Ceci est une baguette genre classique avec une description bien longue pour le saut de ligne',
     nom: 'Baguette tradition',
     idCategorie: 1,
     idCommerce: 1,
@@ -48,7 +48,7 @@ export class ProduitsCommandePageComponent implements OnInit {
   }
 ];
 
-lstProduitPanier = this.lstProduit.filter(prod => prod.Panier_Produit != null && prod.Panier_Produit.nbrProduit > 0);
+lstProduitPanier = this.lstProduit;
   ngOnInit(): void {
 
   }

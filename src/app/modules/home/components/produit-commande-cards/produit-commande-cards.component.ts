@@ -18,9 +18,6 @@ export interface Tile {
 
 export class ProduitCommandeCardsComponent implements OnInit {
 
-
-  test: string;
-
   constructor() { }
   @Input() produit: IProduit;
   ngOnInit(): void {
@@ -28,12 +25,14 @@ export class ProduitCommandeCardsComponent implements OnInit {
       this.produit.Panier_Produit = {
         nbrProduit: 0,
         ProduitId: this.produit.id
-      }
+      };
     }
   }
 
   onClickRemove(): void {
-    this.produit.Panier_Produit.nbrProduit -= 1;
+    if (this.produit.Panier_Produit.nbrProduit >= 1){
+      this.produit.Panier_Produit.nbrProduit -= 1;
+    }
   }
 
   onClickAdd(): void {

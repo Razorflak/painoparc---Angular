@@ -1,34 +1,69 @@
-
-<mat-card class="cardProduit">
-  <mat-grid-list cols="4" rowHeight="20px">
-    <!--Image du produit-->
-    <mat-grid-tile [colspan]="1" [rowspan]="7" class="tileImg">
-      <img src="/assets/img/Baguette_Tradition.jpg" alt="Photo of a Shiba Inu">
-    </mat-grid-tile>
-    <!--Titre du produit-->
-    <mat-grid-tile [colspan]="3" [rowspan]="2" class="tileTitre">
-      <div class="divGridTile">
-        {{produit.nom}}
+<div class="mainDiv">
+  <mat-card class="cardProduit">
+    <div class="cardContent">
+      <div class="tileImg">
+        <img src="/assets/img/Baguette_Tradition.jpg" alt="Photo of a Shiba Inu">
       </div>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="2" class="tileDescription">
-      <div class="divGridTile">
-        {{produit.description}}
+      <div class="divRight">
+        <div class="tileTitre">
+          <div class="divGridTile">
+            {{produit.nom}}
+          </div>
+        </div>
+        <div class="tileDescription">
+          <div class="divGridTile">
+            {{produit.description}}
+          </div>
+        </div>
+        <div class="tileAction">
+          <div class="divGridTile divAction">
+            <button mat-mini-fab color="primary" class="actionButton" (click)="onClickRemove()">
+              <mat-icon>remove</mat-icon>
+            </button>
+            <div class="nbrProduit">{{produit.Panier_Produit.nbrProduit.toString()}}</div>
+            <button mat-mini-fab  color="primary" class="actionButton" (click)="onClickAdd()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
       </div>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="3" class="tileAction">
-      <div class="divGridTile divAction">
-        <button mat-mini-fab color="primary" class="actionButton" (click)="onClickRemove()">
-          <mat-icon>remove</mat-icon>
-        </button>
-        <div class="nbrProduit">{{produit.Panier_Produit.nbrProduit.toString()}}</div>
-        <button mat-mini-fab color="primary" class="actionButton" (click)="onClickAdd()">
-          <mat-icon>add</mat-icon>
-        </button>
-      </div>
-    </mat-grid-tile>
+    </div>
 
-  </mat-grid-list>
+  </mat-card>
+</div>
 
-</mat-card>
 
+<!--<div class="mainDiv">
+  <mat-card class="cardProduit">
+    <mat-grid-list cols="4" rowHeight="20px">
+
+      <mat-grid-tile [colspan]="1" [rowspan]="6" class="tileImg">
+        <img src="/assets/img/Baguette_Tradition.jpg" alt="Photo of a Shiba Inu">
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="3" [rowspan]="2" class="tileTitre">
+        <div class="divGridTile">
+          {{produit.nom}}
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="2" class="tileDescription">
+        <div class="divGridTile">
+          {{produit.description}}
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="2" class="tileAction">
+        <div class="divGridTile divAction">
+          <button mat-mini-fab color="primary" class="actionButton" (click)="onClickRemove()">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <div class="nbrProduit">{{produit.Panier_Produit.nbrProduit.toString()}}</div>
+          <button mat-mini-fab  color="primary" class="actionButton" (click)="onClickAdd()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+
+  </mat-card>
+</div>-->
