@@ -1,3 +1,4 @@
+import { PanierSvcService } from './../../../../core/services/panier-svc.service';
 import { IProduit } from './../../../../core/interfaces/IProduit';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -18,7 +19,7 @@ export interface Tile {
 
 export class ProduitCommandeCardsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private panierSvc: PanierSvcService) { }
   @Input() produit: IProduit;
   ngOnInit(): void {
     if (this.produit.Panier_Produit == null){
@@ -30,12 +31,10 @@ export class ProduitCommandeCardsComponent implements OnInit {
   }
 
   onClickRemove(): void {
-    if (this.produit.Panier_Produit.nbrProduit >= 1){
-      this.produit.Panier_Produit.nbrProduit -= 1;
-    }
+    this.panierSvc.removeOneNbrProduitPanier(this.produit);
   }
 
   onClickAdd(): void {
-    this.produit.Panier_Produit.nbrProduit += 1;
+    this.panierSvc.addOneNbrProduitPanier(this.produit);
   }
 }

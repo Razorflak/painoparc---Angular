@@ -1,11 +1,13 @@
 <div class="mainDiv">
-  <button mat-icon-button color="primary">
+  <button mat-icon-button color="primary" (click)="onClickRemove()">
     <mat-icon>remove_circle_outline</mat-icon>
   </button>
-  <span>
-    {{produit.Panier_Produit.nbrProduit}}
-  </span>
-  <button mat-icon-button color="primary">
+  <div class="spanNbrProduit">
+    <span >
+      {{produit.Panier_Produit.nbrProduit}}
+    </span>
+  </div>
+  <button mat-icon-button color="primary" (click)="onClickAdd()">
     <mat-icon>add_circle_outline</mat-icon>
   </button>
 

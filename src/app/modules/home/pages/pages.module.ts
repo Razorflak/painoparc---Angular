@@ -9,6 +9,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import {MatFormFieldModule, MatFormField} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -35,7 +36,12 @@ export const yourRouting = RouterModule.forChild(yourRoutes);
     MaterialAngularModule,
     yourRouting
   ],
-  exports: [LoginPageComponent,
-  ProduitsCommandePageComponent]
+  exports: [
+    LoginPageComponent,
+    ProduitsCommandePageComponent
+  ],
+  providers: [
+    CookieService
+  ]
 })
 export class PagesModule { }

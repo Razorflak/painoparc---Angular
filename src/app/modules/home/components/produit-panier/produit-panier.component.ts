@@ -1,3 +1,4 @@
+import { PanierSvcService } from 'src/app/core/services/panier-svc.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { IProduit } from 'src/app/core/interfaces/IProduit';
 
@@ -8,9 +9,18 @@ import { IProduit } from 'src/app/core/interfaces/IProduit';
 })
 export class ProduitPanierComponent implements OnInit {
 
-  constructor() { }
+  constructor(private panierSvc: PanierSvcService) { }
 
   @Input() produit: IProduit;
   ngOnInit(): void {
+  }
+
+
+  onClickRemove(): void {
+    this.panierSvc.removeOneNbrProduitPanier(this.produit);
+  }
+
+  onClickAdd(): void {
+    this.panierSvc.addOneNbrProduitPanier(this.produit);
   }
 }

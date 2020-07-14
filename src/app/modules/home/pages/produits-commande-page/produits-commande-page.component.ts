@@ -1,56 +1,35 @@
+import { PanierSvcService } from './../../../../core/services/panier-svc.service';
 import { IProduit } from './../../../../core/interfaces/IProduit';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
+
 
 @Component({
   selector: 'app-produits-commande-page',
   templateUrl: './produits-commande-page.component.html',
   styleUrls: ['./produits-commande-page.component.scss']
 })
-export class ProduitsCommandePageComponent implements OnInit {
+export class ProduitsCommandePageComponent implements OnInit, DoCheck {
 
 
-  constructor() { }
-  // Données de test déplacer dans un répertoire plus approprié...
-  lstProduit: Array<IProduit> = [{
-    id: 1,
-    commission: 0,
-    description: 'Ceci est une baguette genre classique avec une description bien longue pour le saut de ligne',
-    nom: 'Baguette tradition',
-    idCategorie: 1,
-    idCommerce: 1,
-    isAvailable: true,
-    prix: 1,
-    stock: 150
-  }, {
-    id: 2,
-    commission: 0,
-    description: 'La bonne boule de grand mère !',
-    nom: 'Boule',
-    idCategorie: 1,
-    idCommerce: 1,
-    isAvailable: true,
-    prix: 2,
-    stock: 150
-  },
-  {
-    id: 3,
-    commission: 0,
-    description: 'Le pain moulé que personne n\'aime',
-    nom: 'Baguette moulé',
-    idCategorie: 1,
-    idCommerce: 1,
-    isAvailable: true,
-    prix: 2,
-    stock: 150,
-    Panier_Produit: {
-      nbrProduit: 10
-    }
+  constructor(private panierSvc: PanierSvcService) { }
+  lstProduit: Array<IProduit>;
+  nbrProduitCommande: number;
+  sousTotal: number;
+  lstProduitPanier: Array<IProduit>;
+  async ngOnInit(): Promise<void> {
+    console.log('oninit');
+    this.lstProduit = await this.panierSvc.getLstProduitCommandable();
+    console.log('Un truc Async');
+    console.log(this.lstProduit);
+    this.lstProduitPanier = this.lstProduit;
+    this.panierSvc.majPanierWithCookie(this.lstProduit);
   }
-];
 
-lstProduitPanier = this.lstProduit;
-  ngOnInit(): void {
+  ngDoCheck(): void {
 
+    this.nbrProduitCommande = this.panierSvc.getNbrProduitPanier();
+    this.sousTotal = this.panierSvc.getSousTotalPanier();
+    this.panierSvc.savePanierCookie();
   }
 
 

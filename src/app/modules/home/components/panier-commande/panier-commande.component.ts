@@ -1,3 +1,4 @@
+import { PanierSvcService } from 'src/app/core/services/panier-svc.service';
 import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { IProduit } from 'src/app/core/interfaces/IProduit';
 
@@ -8,7 +9,7 @@ import { IProduit } from 'src/app/core/interfaces/IProduit';
 })
 export class PanierCommandeComponent implements OnInit, DoCheck {
 
-  constructor() { }
+  constructor(private panierSvc: PanierSvcService) { }
   @Input() lstProduitPanier: Array<IProduit>;
   lstProduitNofFilter: Array<IProduit>;
 
@@ -21,9 +22,11 @@ export class PanierCommandeComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
-
+    if (this.lstProduitNofFilter === undefined){
+      return;
+    }
     this.lstProduitPanier = this.lstProduitNofFilter.filter(prod => prod.Panier_Produit != null && prod.Panier_Produit.nbrProduit > 0);
-    console.log(this.lstProduitPanier);
+    this.sousTotalProduit = this.panierSvc.getSousTotalPanier();
   }
 
 }

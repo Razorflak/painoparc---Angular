@@ -6,6 +6,23 @@
   <div class="divPanier">
     <app-panier-commande [lstProduitPanier] = lstProduitPanier></app-panier-commande>
   </div>
+  <div class="divBtnValiderPanierMobil">
+    <button mat-raised-button color="primary">
+      <div class="divBtnPanierMobil">
+        <div class="divLeftButton">
+          <button mat-fab color="accent">
+            {{nbrProduitCommande}}
+          </button>
+        </div>
+        <div class="divMidButton">
+          Valider mon panier
+        </div>
+        <div class="divRightButton">
+          {{(sousTotal | number:'.2') + " €"}}
+        </div>
+      </div>
+    </button>
+  </div>
 </div>
 
 

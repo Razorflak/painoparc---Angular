@@ -3,7 +3,10 @@
   flex-direction: initial;
   position: relative;
   background-color: lightgray;
+  width: 100%;
 }
+
+
 
 .divProduit {
   display: flex;
@@ -11,30 +14,81 @@
   flex-wrap: wrap;
   flex-flow: row wrap;
   flex-grow: 1;
-
 }
 
 .divProduit app-produit-commande-cards {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
 }
 
 
 
 .divPanier {
   height: 100%;
-  max-width: 500px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-right: 50px;
+}
+
+.divBtnValiderPanierMobil {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  min-width: 100%;
+  visibility: hidden;
+}
+
+.divBtnValiderPanierMobil > button:first-child {
+  width: 100%;
+  min-height: 75px;
+}
+
+.divBtnPanierMobil{
+  display: flex;
+  flex-direction: row;
+}
+
+.divLeftButton{
   display: flex;
   justify-content: center;
+  width: 20%;
+}
+
+.divLeftButton button {
+  font-size: large;
+}
+
+.divMidButton{
+  display: flex;
+  width: 60%;
   align-items: center;
-  margin-left: 10px;
-  margin-right: 10px;
+  justify-content: center;
+  font-size: large;
+}
+
+.divRightButton{
+  display: flex;
+  width: 20%;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
 }
 
 // Retrait de la parti panier pour les mobil
 @media (max-width : 770px) {
-  .divPanier {visibility: hidden;}
-  .divPanier {width: 0px;}
+  .divPanier {visibility: hidden;
+    padding-right: 0px;
+    width: 0px;}
+  .divProduit {
+    padding-left: 0px;
+    justify-content: center;
+    margin-bottom: 100px;
+  }
+  .divBtnValiderPanierMobil {
+    visibility: visible;
+  }
+
 }
 
 .divPanier app-panier-commande{

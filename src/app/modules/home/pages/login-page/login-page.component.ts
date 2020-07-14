@@ -1,3 +1,6 @@
+import { IUser } from './../../../../core/interfaces/IUser';
+import { logging } from 'protractor';
+import { AuthService } from './../../../../core/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -13,13 +16,24 @@ export class LoginPageComponent implements OnInit {
     username: new FormControl(''),
     password: new FormControl('')
   });
-  constructor() { }
+  constructor(private authSvc: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  submit(): void {
 
+  submit(): void {
+    console.log ('onSubmit');
+    const user: IUser = {
+      email: 'tanguyj35@gmail.com',
+      password: 'azerty',
+      firstName: 'Julien',
+      id: 0,
+      isAdmin: 1,
+      lastName: 'TANGUY'
+    };
+    const test = this.authSvc.login(user);
+    console.log('test: ' + test);
   }
 
 }

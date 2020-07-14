@@ -16,6 +16,7 @@
 
 .cardContent{
   height: 100px;
+  width: 100%;
   display: flex;
   flex-direction: row;
 }
@@ -23,6 +24,7 @@
 .divRight {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .tileImg {
@@ -51,6 +53,9 @@
 }
 
 .tileAction {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
   font-size: 24px;
 }
 
@@ -85,4 +90,12 @@
 .actionButton mat-icon {
   font-size: 16px;
   margin-top: -8px;
+}
+
+.divPrixProduit{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: initial;
 }
