@@ -10,6 +10,7 @@ import {MatFormFieldModule, MatFormField} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import { CookieService } from 'ngx-cookie-service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -34,6 +35,8 @@ export const yourRouting = RouterModule.forChild(yourRoutes);
     MatCardModule,
     MatInputModule,
     MaterialAngularModule,
+    FormsModule,
+    ReactiveFormsModule,
     yourRouting
   ],
   exports: [

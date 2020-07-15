@@ -12,28 +12,21 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginPageComponent implements OnInit {
 
-  form: FormGroup = new FormGroup({
-    username: new FormControl(''),
+  loginForm: FormGroup = new FormGroup({
+    email: new FormControl(''),
     password: new FormControl('')
   });
   constructor(private authSvc: AuthService) { }
 
   ngOnInit(): void {
+    // TODO Pour test plus rapide, à retirert une fois la méchanique de sauvegarde dans le navigateur mis en place
+    this.loginForm.controls['email'].setValue('tanguyj35@gmail.com');
+    this.loginForm.controls['password'].setValue('azerty');
   }
 
 
   submit(): void {
-    console.log ('onSubmit');
-    const user: IUser = {
-      email: 'tanguyj35@gmail.com',
-      password: 'azerty',
-      firstName: 'Julien',
-      id: 0,
-      isAdmin: 1,
-      lastName: 'TANGUY'
-    };
-    const test = this.authSvc.login(user);
-    console.log('test: ' + test);
+    this.authSvc.login(this.loginForm.value);
   }
 
 }

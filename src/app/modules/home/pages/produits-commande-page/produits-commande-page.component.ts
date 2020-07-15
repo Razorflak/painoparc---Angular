@@ -17,12 +17,14 @@ export class ProduitsCommandePageComponent implements OnInit, DoCheck {
   sousTotal: number;
   lstProduitPanier: Array<IProduit>;
   async ngOnInit(): Promise<void> {
-    console.log('oninit');
-    this.lstProduit = await this.panierSvc.getLstProduitCommandable();
-    console.log('Un truc Async');
-    console.log(this.lstProduit);
-    this.lstProduitPanier = this.lstProduit;
-    this.panierSvc.majPanierWithCookie(this.lstProduit);
+    try {
+      this.lstProduit = await this.panierSvc.getLstProduitCommandable();
+      this.lstProduitPanier = this.lstProduit;
+      this.panierSvc.majPanierWithCookie(this.lstProduit);
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 
   ngDoCheck(): void {

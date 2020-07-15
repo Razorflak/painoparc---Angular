@@ -56,10 +56,22 @@ export class PanierSvcService {
   console.log(url);
   let lstProduit;
   try {
-    lstProduit = await this.httpClient.get<IProduit[]>(this.appConfig.apiURL + '/produit/allProduitPourCommande'
-                                                        ,).toPromise();
+    lstProduit = await this.httpClient.get(this.appConfig.apiURL + '/produit/allProduitPourCommande')
+                                      .subscribe(response => {
+                                        console.log(response);
+                                      },
+                                      err => {
+                                        console.log('Erreur lors de l\'appel de la liste de produits');
+                                        console.log(err);
+                                        throw err;
+                                      },
+                                      () => {
+                                        console.log('onObsLstProduit Complet');
+                                      });
   } catch (error) {
-    console.log('Erreur: ' + error.message);
+    console.log('Catch G Lst Produits')
+    console.log(error);
+    lstProduit = new Array<IProduit>();
   }
   console.log('onChargementProduit');
   console.log(lstProduit);

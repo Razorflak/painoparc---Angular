@@ -5,23 +5,22 @@
   </mat-card-title>
 
 <mat-card-content>
-  <form class="card-block" role="form" novalidate (ngSubmit)="submit()">
-	 <p>
+  <form class="card-block" [formGroup]="loginForm" (ngSubmit)="submit()">
+	<p>
 	<mat-form-field>
-		<input type="text" matInput placeholder="Username" formControlName="username">
+		<input type="text" matInput placeholder="Username" formControlName="email">
 	</mat-form-field>
-	 </p>
+	</p>
 
-	 <p>
+	<p>
 	<mat-form-field>
-		<input type="password" matInput placeholder="Passwssord" formControlName="password">
+	  <input type="password" matInput placeholder="Passwssord" formControlName="password">
 	</mat-form-field>
-	 </p>
-	 <div class="button">
-	<button type="submit" mat-button>Login</button>
-	 </div>
+	</p>
+	<div class="button">
+	  <button type="submit" mat-button>Login</button>
+	</div>
 
  </form>
 </mat-card-content>
 </mat-card>
-<button (click)="submit()" mat-button>Login</button>
