@@ -4,7 +4,7 @@
     <app-produit-commande-cards *ngFor="let produit of lstProduit | async" [produit] = "produit"></app-produit-commande-cards>
   </div>
   <div class="divPanier">
-    <app-panier-commande [lstProduitPanier] = lstProduitPanier></app-panier-commande>
+    <app-panier-commande [lstProduitPanier] = lstProduit></app-panier-commande>
   </div>
   <div class="divBtnValiderPanierMobil">
     <button mat-raised-button color="primary">

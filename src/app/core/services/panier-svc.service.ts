@@ -1,4 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { SessionService } from './session.service';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { IProduit } from './../interfaces/IProduit';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
@@ -12,13 +14,14 @@ export class PanierSvcService {
 
   constructor(private cookieSvc: CookieService,
               private httpClient: HttpClient,
-              private appConfig: AppConfig) { }
+              private appConfig: AppConfig,
+              private sessionSvc: SessionService) { }
 
   lstProduitCommandable: Array<IProduit>;
   /**
    * Fonction de récupération de la liste des produits commandable pour le user courant
    */
-  async getLstProduitCommandable(): Promise<IProduit[]> {
+  getLstProduitCommandable(): Observable<IProduit[]> {
     /*this.lstProduitCommandable =  [{
       id: 1,
       commission: 0,
@@ -52,30 +55,15 @@ export class PanierSvcService {
       stock: 150
     }
   ];*/
+
   const url: string = this.appConfig.apiURL + '/produit/allProduitPourCommande';
   console.log(url);
-  let lstProduit;
-  try {
-    lstProduit = await this.httpClient.get(this.appConfig.apiURL + '/produit/allProduitPourCommande')
-                                      .subscribe(response => {
-                                        console.log(response);
-                                      },
-                                      err => {
-                                        console.log('Erreur lors de l\'appel de la liste de produits');
-                                        console.log(err);
-                                        throw err;
-                                      },
-                                      () => {
-                                        console.log('onObsLstProduit Complet');
-                                      });
-  } catch (error) {
-    console.log('Catch G Lst Produits')
-    console.log(error);
-    lstProduit = new Array<IProduit>();
-  }
-  console.log('onChargementProduit');
-  console.log(lstProduit);
-  return lstProduit;
+  /*const httpOptions = {
+    headers: this.sessionSvc.initHttpOption()
+  }*/
+  return this.httpClient.get<IProduit[]>(this.appConfig.apiURL + '/produit/allProduitPourCommande', {
+    headers: this.sessionSvc.initHttpOption()
+  });
   }
 
   /**

@@ -28,6 +28,7 @@ export class AuthService {
         console.log(url);
         const resultHttp: Observable<any> = this.httpClient.post(url, user);
         resultHttp.subscribe(data => {
+          console.log(data);
           // Sauvegarde de la session
           this.authSvc.setAuth(true, data.user.id, data.token);
           // Navigation vers la page de Commande
