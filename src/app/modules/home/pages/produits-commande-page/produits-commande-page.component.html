@@ -1,28 +1,30 @@
 <app-header></app-header>
 <div class="content">
-  <div class="divProduit">
-    <app-produit-commande-cards *ngFor="let produit of lstProduit | async" [produit] = "produit"></app-produit-commande-cards>
-  </div>
-  <div class="divPanier">
-    <app-panier-commande [lstProduitPanier] = lstProduit></app-panier-commande>
-  </div>
-  <div class="divBtnValiderPanierMobil">
-    <button mat-raised-button color="primary">
-      <div class="divBtnPanierMobil">
-        <div class="divLeftButton">
-          <button mat-fab color="accent">
-            {{nbrProduitCommande}}
-          </button>
+  <ng-container *ngIf="lstProduitPanier!==undefined" >
+    <div class="divProduit">
+        <app-produit-commande-cards *ngFor="let produit of lstProduitPanier" [produit] = "produit"></app-produit-commande-cards>
+    </div>
+    <div class="divPanier">
+      <app-panier-commande [lstProduitPanier] = lstProduitPanier></app-panier-commande>
+    </div>
+    <div class="divBtnValiderPanierMobil">
+      <button mat-raised-button color="primary">
+        <div class="divBtnPanierMobil">
+          <div class="divLeftButton">
+            <button mat-fab color="accent">
+              {{nbrProduitCommande}}
+            </button>
+          </div>
+          <div class="divMidButton">
+            Valider mon panier
+          </div>
+          <div class="divRightButton">
+            {{(sousTotal | number:'.2') + " €"}}
+          </div>
         </div>
-        <div class="divMidButton">
-          Valider mon panier
-        </div>
-        <div class="divRightButton">
-          {{(sousTotal | number:'.2') + " €"}}
-        </div>
-      </div>
-    </button>
-  </div>
+      </button>
+    </div>
+  </ng-container>
 </div>
 
 

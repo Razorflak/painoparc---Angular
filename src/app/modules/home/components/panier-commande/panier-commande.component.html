@@ -3,9 +3,31 @@
     <div class="divProduits">
       <app-produit-panier *ngFor="let produit of lstProduitPanier" [produit] = "produit"></app-produit-panier>
     </div>
+   <div class="divPanierInfo">
+     <div class="divinfo">
+       <div class="divLabel">
+        Sous total
+       </div>
+       <div class="divValeur">
+        {{(sousTotalProduit | number:'.2') + " €"}}
+       </div>
+     </div>
+     <div class="divinfo">
+      <div class="divLabel">
+        Commission
+      </div>
+      <div class="divValeur">
+       {{(commission | number:'.2') + " €"}}
+      </div>
+    </div>
+    <div class="divinfo">
+      <div class="divLabel">
+        Total
+      </div>
+      <div class="divValeur" style="font-weight: 800;">
+       {{(total | number:'.2') + " €"}}
+      </div>
+    </div>
     <mat-divider></mat-divider>
-   <mat-grid-list cols="2" rowHeight="30px">
-    <mat-grid-tile>Sous Total</mat-grid-tile>
-    <mat-grid-tile>{{(sousTotalProduit | number:'.2') + " €"}}</mat-grid-tile>
-  </mat-grid-list>
+  </div>
 </mat-card>

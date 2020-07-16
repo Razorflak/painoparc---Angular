@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { PanierSvcService } from './../../../../core/services/panier-svc.service';
 import { IProduit } from './../../../../core/interfaces/IProduit';
 import { Component, OnInit, DoCheck } from '@angular/core';
@@ -10,36 +11,29 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 })
 export class ProduitsCommandePageComponent implements OnInit, DoCheck {
 
+  isPanierLoad = false;
 
   constructor(private panierSvc: PanierSvcService) { }
-  lstProduit;
+  obsHttpLstPanier: Observable<IProduit[]>;
+  lstProduitPanier;
   nbrProduitCommande: number;
   sousTotal: number;
-  lstProduitPanier: Array<IProduit>;
+
   ngOnInit(): void {
-    this.lstProduit = this.panierSvc.getLstProduitCommandable();
-                  /*.subscribe(resp => {
-                    console.log('Resp lst Produit');
-                    console.log(resp);
-                    // this.lstProduit = of(resp);
-                  },
-                  error => {
-                    console.log('Error chargement lstProduit');
-                    console.log(error);
-                  },
-                  () => {
-                    console.log('onComplet Chargement lstProuit');
-                  })
-                  ;*/
-    this.lstProduitPanier = this.lstProduit;
-    this.panierSvc.majPanierWithCookie(this.lstProduit);
+    this.obsHttpLstPanier = this.panierSvc.loadHttpLstProduitCommandable();
+    this.obsHttpLstPanier.subscribe (data => {
+      console.log(data);
+      this.panierSvc.lstProduitCommandable = data;
+      this.lstProduitPanier = data;
+      this.panierSvc.majPanierWithCookie();
+      this.isPanierLoad = true;
+    });
+
+
   }
   ngDoCheck(): void {
-
-    /*this.nbrProduitCommande = this.panierSvc.getNbrProduitPanier();
     this.sousTotal = this.panierSvc.getSousTotalPanier();
-    this.panierSvc.savePanierCookie();*/
+    this.nbrProduitCommande = this.panierSvc.getNbrProduitPanier();
+    this.panierSvc.savePanierCookie();
   }
-
-
 }

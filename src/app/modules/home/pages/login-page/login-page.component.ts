@@ -19,9 +19,7 @@ export class LoginPageComponent implements OnInit {
   constructor(private authSvc: AuthService) { }
 
   ngOnInit(): void {
-    // TODO Pour test plus rapide, à retirert une fois la méchanique de sauvegarde dans le navigateur mis en place
-    this.loginForm.controls['email'].setValue('tanguyj35@gmail.com');
-    this.loginForm.controls['password'].setValue('azerty');
+
   }
 
 

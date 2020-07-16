@@ -16,6 +16,7 @@ export class PanierCommandeComponent implements OnInit, DoCheck {
   sousTotalProduit;
   commission;
   differ;
+  total;
 
   ngOnInit(): void {
     this.lstProduitNofFilter = this.lstProduitPanier;
@@ -27,6 +28,7 @@ export class PanierCommandeComponent implements OnInit, DoCheck {
     }
     this.lstProduitPanier = this.lstProduitNofFilter.filter(prod => prod.Panier_Produit != null && prod.Panier_Produit.nbrProduit > 0);
     this.sousTotalProduit = this.panierSvc.getSousTotalPanier();
+    this.commission = 1;
+    this.total = this.sousTotalProduit + this.commission;
   }
-
 }

@@ -18,10 +18,12 @@ export class PanierSvcService {
               private sessionSvc: SessionService) { }
 
   lstProduitCommandable: Array<IProduit>;
+
+
   /**
    * Fonction de récupération de la liste des produits commandable pour le user courant
    */
-  getLstProduitCommandable(): Observable<IProduit[]> {
+  loadHttpLstProduitCommandable(): Observable<IProduit[]> {
     /*this.lstProduitCommandable =  [{
       id: 1,
       commission: 0,
@@ -61,9 +63,10 @@ export class PanierSvcService {
   /*const httpOptions = {
     headers: this.sessionSvc.initHttpOption()
   }*/
-  return this.httpClient.get<IProduit[]>(this.appConfig.apiURL + '/produit/allProduitPourCommande', {
+  const panierLstObs: Observable<IProduit[]> = this.httpClient.get<IProduit[]>(this.appConfig.apiURL + '/produit/allProduitPourCommande', {
     headers: this.sessionSvc.initHttpOption()
   });
+  return panierLstObs;
   }
 
   /**
@@ -96,7 +99,7 @@ export class PanierSvcService {
     if (produit.Panier_Produit.nbrProduit >= 1){
       produit.Panier_Produit.nbrProduit -= 1;
     }
-    //TODO sans doute règle de gestion à ajouté pour limité l'ajout par rapport au stock
+    // TODO sans doute règle de gestion à ajouté pour limité l'ajout par rapport au stock
   }
 
   getSousTotalPanier(): number{
@@ -129,35 +132,35 @@ export class PanierSvcService {
     if (this.lstProduitCommandable === undefined){
       return;
     }
+
+    const panierFiltre: IProduit[] = this.lstProduitCommandable
+                                    .filter(prod => prod.Panier_Produit != null && prod.Panier_Produit.nbrProduit > 0);
+    // TODO revoir le temps du Cookie
     this.cookieSvc.set('currentPanier', JSON.stringify(
-      this.lstProduitCommandable.filter(prod => prod.Panier_Produit != null && prod.Panier_Produit.nbrProduit > 0)
+      panierFiltre
       )
       , 1000000000000000000000);
-      // TODO revoir le temps du Cookie
   }
 
-  majPanierWithCookie(lstProduit: IProduit[]): void {
+  majPanierWithCookie(): void {
     if (this.lstProduitCommandable === undefined){
       return;
     }
     const cookiePanier = this.cookieSvc.get('currentPanier');
     let lstPanierCookie: Array<IProduit>;
-    if ( cookiePanier.length > 0){
-      lstPanierCookie = JSON.parse(cookiePanier);
-      lstPanierCookie.forEach(produitCookie => {
-        const produitEcran = this.lstProduitCommandable.find(p => p.id === produitCookie.id);
-        if (produitEcran != null){
-          if (produitEcran.Panier_Produit == null){
-            produitEcran.Panier_Produit = {
-              ProduitId: produitEcran.id,
-              nbrProduit: 0
-            };
-            produitEcran.Panier_Produit.nbrProduit = produitCookie.Panier_Produit.nbrProduit;
-          }
+    lstPanierCookie = JSON.parse(cookiePanier);
+    lstPanierCookie.forEach(produitCookie => {
+      const produitEcran = this.lstProduitCommandable.find(p => p.id === produitCookie.id);
+      if (produitEcran != null){
+        if (produitEcran.Panier_Produit == null){
+          produitEcran.Panier_Produit = {
+            ProduitId: produitEcran.id,
+            nbrProduit: 0
+          };
+          produitEcran.Panier_Produit.nbrProduit = produitCookie.Panier_Produit.nbrProduit;
         }
-      });
-
-    }
+      }
+    });
   }
 
 }
