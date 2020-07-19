@@ -11,6 +11,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import { CookieService } from 'ngx-cookie-service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommandeValidePageComponent } from './commande-valide-page/commande-valide-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 
 
@@ -18,6 +20,8 @@ const yourRoutes: Routes = [
   { path: '',  component: LoginPageComponent },
   { path: 'login',  component: LoginPageComponent },
   { path: 'commander',  component: ProduitsCommandePageComponent },
+  { path: 'valider_commande', component: CommandeValidePageComponent},
+  { path: 'register', component: RegisterPageComponent},
   { path: '**',  component: LoginPageComponent }
 ];
 
@@ -26,7 +30,9 @@ export const yourRouting = RouterModule.forChild(yourRoutes);
 
 @NgModule({
   declarations: [LoginPageComponent,
-  ProduitsCommandePageComponent],
+  ProduitsCommandePageComponent,
+  CommandeValidePageComponent,
+  RegisterPageComponent],
   imports: [
     CommonModule,
     ComponentsModule,

@@ -1,8 +1,5 @@
-import { IUser } from './../../../../core/interfaces/IUser';
-import { logging } from 'protractor';
 import { AuthService } from './../../../../core/services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -16,6 +13,7 @@ export class LoginPageComponent implements OnInit {
     email: new FormControl(''),
     password: new FormControl('')
   });
+
   constructor(private authSvc: AuthService) { }
 
   ngOnInit(): void {

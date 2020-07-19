@@ -8,7 +8,7 @@
   <form class="card-block" [formGroup]="loginForm" (ngSubmit)="submit()">
 	<p>
 	<mat-form-field>
-		<input type="text" matInput placeholder="Username" formControlName="email">
+		<input type="text" matInput placeholder="E-mail" formControlName="email">
 	</mat-form-field>
 	</p>
 
@@ -18,8 +18,10 @@
 	</mat-form-field>
 	</p>
 	<div class="button">
-	  <button type="submit" mat-button>Login</button>
-	</div>
+	  <button mat-raised-button color="primary" type="submit" mat-button>Login</button>
+  </div>
+  <p>
+  <a routerLink="/register" routerLinkActive="active">Créer un compte</a>
 
  </form>
 </mat-card-content>

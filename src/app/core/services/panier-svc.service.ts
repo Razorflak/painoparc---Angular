@@ -12,6 +12,7 @@ import { AppConfig } from 'src/app/config/app-config';
 export class PanierSvcService {
 
 
+
   constructor(private cookieSvc: CookieService,
               private httpClient: HttpClient,
               private appConfig: AppConfig,
@@ -147,20 +148,35 @@ export class PanierSvcService {
       return;
     }
     const cookiePanier = this.cookieSvc.get('currentPanier');
-    let lstPanierCookie: Array<IProduit>;
-    lstPanierCookie = JSON.parse(cookiePanier);
-    lstPanierCookie.forEach(produitCookie => {
-      const produitEcran = this.lstProduitCommandable.find(p => p.id === produitCookie.id);
-      if (produitEcran != null){
-        if (produitEcran.Panier_Produit == null){
-          produitEcran.Panier_Produit = {
-            ProduitId: produitEcran.id,
-            nbrProduit: 0
-          };
-          produitEcran.Panier_Produit.nbrProduit = produitCookie.Panier_Produit.nbrProduit;
+    if (cookiePanier === undefined){
+      return;
+    }
+    try {
+      let lstPanierCookie: Array<IProduit>;
+      lstPanierCookie = JSON.parse(cookiePanier);
+      lstPanierCookie.forEach(produitCookie => {
+        const produitEcran = this.lstProduitCommandable.find(p => p.id === produitCookie.id);
+        if (produitEcran != null){
+          if (produitEcran.Panier_Produit == null){
+            produitEcran.Panier_Produit = {
+              ProduitId: produitEcran.id,
+              nbrProduit: 0
+            };
+            produitEcran.Panier_Produit.nbrProduit = produitCookie.Panier_Produit.nbrProduit;
+          }
         }
-      }
-    });
+      });
+    } catch (error) {
+      console.log('Erreur de mise à jour du panier avec le cookie');
+      console.log(error);
+    }
+
   }
+
+  /*sauvegarderPanierDb(): Observable<boolean> {
+	  const panierLstObs: Observable<IProduit[]> = this.httpClient.get<IProduit[]>(this.appConfig.apiURL + '/produit/allProduitPourCommande', {
+      headers: this.sessionSvc.initHttpOption()
+    });
+  }*/
 
 }

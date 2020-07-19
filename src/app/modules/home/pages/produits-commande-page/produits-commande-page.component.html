@@ -1,14 +1,19 @@
 <app-header></app-header>
 <div class="content">
   <ng-container *ngIf="lstProduitPanier!==undefined" >
-    <div class="divProduit">
-        <app-produit-commande-cards *ngFor="let produit of lstProduitPanier" [produit] = "produit"></app-produit-commande-cards>
-    </div>
+    <div class="divLeftScreen">
+      <div class="divCategorie"  *ngFor="let categorie of lstCategorie">
+        <p>{{categorie.libelle}}</p>
+        <div class="divProduit" >
+          <app-produit-commande-cards *ngFor="let produit of categorie.produits" [produit] = "produit"></app-produit-commande-cards>
+        </div>
+      </div>
+   </div>
     <div class="divPanier">
       <app-panier-commande [lstProduitPanier] = lstProduitPanier></app-panier-commande>
     </div>
     <div class="divBtnValiderPanierMobil">
-      <button mat-raised-button color="primary">
+      <button mat-raised-button color="primary" (click)='onClickValidPanier()'>
         <div class="divBtnPanierMobil">
           <div class="divLeftButton">
             <button mat-fab color="accent">

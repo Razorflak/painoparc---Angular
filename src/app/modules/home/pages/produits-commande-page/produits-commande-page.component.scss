@@ -6,7 +6,20 @@
   width: 100%;
 }
 
+.divLeftScreen {
+  width: 75%;
+}
 
+.divCategorie {
+  display: flex;
+  flex-direction: column;
+}
+
+.divCategorie p {
+  font-size: x-large;
+  margin-left: 30px;
+  margin-top: 30px;
+}
 
 .divProduit {
   display: flex;
@@ -19,6 +32,7 @@
 .divProduit app-produit-commande-cards {
   width: 100%;
   max-width: 400px;
+  margin-left: 30px;
 }
 
 
@@ -80,14 +94,26 @@
   .divPanier {visibility: hidden;
     padding-right: 0px;
     width: 0px;}
+  .divLeftScreen {
+    width: 100%;
+  }
   .divProduit {
-    padding-left: 0px;
-    justify-content: center;
-    margin-bottom: 100px;
+    max-width: 100%;
+    margin-left: 0px;
+    justify-content: flex-start;
+  }
+  .divProduit app-produit-commande-cards {
+    max-width: 100%;
+    margin-left: 0px;
   }
   .divBtnValiderPanierMobil {
     visibility: visible;
   }
+  .content {
+    margin-bottom: 100px;
+  }
+
+
 
 }
 

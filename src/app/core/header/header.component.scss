@@ -1,3 +1,14 @@
 .spacerFull {
   flex: 1 1 auto;
 }
+
+.imgTypo {
+  display: flex;
+  max-width: 150px;
+  background-color: coral;
+}
+
+.imgTypo img{
+  max-width: 100%;
+  max-height: 100%;
+}
