@@ -50,6 +50,9 @@
     </mat-form-field>
     <p>
     <mat-checkbox matInput formControlName="isCommercant" id="isCommercant">Je suis un commercant</mat-checkbox>
+    <mat-error *ngIf="false">
+      Les comptes commerçant sont soumis à une validation manuelle
+    </mat-error>
     <p>
     <button mat-raised-button color="primary" type="submit">Valider</button>
   </form>

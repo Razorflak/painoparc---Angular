@@ -1,3 +1,4 @@
+import { IPanier } from './../../../../core/interfaces/IPanier';
 import { SessionService } from './../../../../core/services/session.service';
 import { ICategorie } from './../../../../core/interfaces/ICategorie';
 import { Observable } from 'rxjs';
@@ -14,34 +15,33 @@ import { Router } from '@angular/router';
 })
 export class ProduitsCommandePageComponent implements OnInit, DoCheck {
 
-  isPanierLoad = false;
 
   constructor(private panierSvc: PanierSvcService,
-              private router: Router,
-              private sessionSvc: SessionService) { }
+              private router: Router) { }
   obsHttpLstPanier: Observable<IProduit[]>;
-  lstProduitPanier;
+  lstProduit;
   lstCategorie;
   nbrProduitCommande: number;
   sousTotal: number;
+  panier: IPanier;
 
   ngOnInit(): void {
-    this.obsHttpLstPanier = this.panierSvc.loadHttpLstProduitCommandable();
-    this.obsHttpLstPanier.subscribe (data => {
-      console.log(data);
-      this.panierSvc.lstProduitCommandable = data;
-      this.lstProduitPanier = data;
-      this.panierSvc.majPanierWithCookie();
-      this.isPanierLoad = true;
-      this.createLstCategorie();
+    this.panierSvc.loadHttpLstProduitCommandable().then(result => {
+      this.lstProduit = result;
+      this.panierSvc.lstProduit = result;
+      const lstProduitLS: IProduit[] = JSON.parse(window.localStorage.getItem('currentPanier'));
+      if (lstProduitLS !== null){
+        console.log(result);
+        console.log(lstProduitLS);
+        this.panierSvc.mergeQteLstProduitsLocalStorage(result, lstProduitLS);
+      }
+      this.createLstCategorie(this.lstProduit);
     });
-
-
   }
 
-  createLstCategorie(): void{
+  createLstCategorie(lstProduit: IProduit[]): void{
     const lstCategorie: any[] = new Array();
-    this.lstProduitPanier.forEach(produit => {
+    lstProduit.forEach(produit => {
       let cat = lstCategorie.find( categorie => categorie.id === produit.Categorie.id);
       if (cat === undefined){
         cat = {
@@ -59,13 +59,14 @@ export class ProduitsCommandePageComponent implements OnInit, DoCheck {
   ngDoCheck(): void {
     this.sousTotal = this.panierSvc.getSousTotalPanier();
     this.nbrProduitCommande = this.panierSvc.getNbrProduitPanier();
-    this.panierSvc.savePanierCookie();
+    this.panierSvc.saveProduitsLocalStorage();
   }
 
   onClickValidPanier(): void{
     // TODO: Sauvegarde du panier et faire le navigate sur le retour
-    console.log('Coucou');
-    console.log(this.sessionSvc.token);
+    this.panierSvc.saveProduitsLocalStorage();
     this.router.navigate(['/valider_commande']);
   }
+
+
 }

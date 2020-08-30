@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="content">
-  <ng-container *ngIf="lstProduitPanier!==undefined" >
+  <ng-container *ngIf="lstProduit!==undefined" >
     <div class="divLeftScreen">
       <div class="divCategorie"  *ngFor="let categorie of lstCategorie">
         <p>{{categorie.libelle}}</p>
@@ -10,7 +10,7 @@
       </div>
    </div>
     <div class="divPanier">
-      <app-panier-commande [lstProduitPanier] = lstProduitPanier></app-panier-commande>
+      <app-panier-commande [lstProduitPanier] = lstProduit></app-panier-commande>
     </div>
     <div class="divBtnValiderPanierMobil">
       <button mat-raised-button color="primary" (click)='onClickValidPanier()'>
