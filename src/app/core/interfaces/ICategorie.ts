@@ -1,4 +1,4 @@
 export interface ICategorie{
-	id?: number;
-	libelle: string;
+  id?: number;
+  libelle: string;
 }
