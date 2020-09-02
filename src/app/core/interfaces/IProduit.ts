@@ -1,3 +1,4 @@
+import { ICommerce } from './ICommerce';
 import { ICommande } from './ICommande';
 import { ICategorie } from './ICategorie';
 import { IPanier_Produit } from './IPanier_Produit';
@@ -12,8 +13,9 @@ export interface IProduit{
   commission: number;
   isAvailable: boolean;
   delaiProduction: number;
-  imgFileName?: string;
+  imgFileName?: string[];
   Panier_Produit?: IPanier_Produit;
   Commandes?: Array<ICommande>;
-  Categorie: ICategorie;
+  Categorie?: ICategorie;
+  Commerce?: ICommerce;
 }
