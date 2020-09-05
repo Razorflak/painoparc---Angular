@@ -1,6 +1,8 @@
+import { ProduitDisplayDetailsComponent } from './../produit-display-details/produit-display-details.component';
 import { PanierSvcService } from './../../../../core/services/panier-svc.service';
 import { IProduit } from './../../../../core/interfaces/IProduit';
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 export interface Tile {
   color: string;
@@ -19,7 +21,8 @@ export interface Tile {
 
 export class ProduitCommandeCardsComponent implements OnInit {
 
-  constructor(private panierSvc: PanierSvcService) { }
+  constructor(private panierSvc: PanierSvcService,
+              private matDialog: MatDialog) { }
   @Input() produit: IProduit;
   ngOnInit(): void {
     if (this.produit.Panier_Produit == null){
@@ -36,5 +39,10 @@ export class ProduitCommandeCardsComponent implements OnInit {
 
   onClickAdd(): void {
     this.panierSvc.addOneNbrProduitPanier(this.produit);
+  }
+
+  onClickCheck(): void {
+    const dialConfig: MatDialogConfig = new MatDialogConfig();
+    this.matDialog.open(ProduitDisplayDetailsComponent, dialConfig);
   }
 }

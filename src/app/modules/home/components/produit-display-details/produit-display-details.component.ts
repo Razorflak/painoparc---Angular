@@ -6,6 +6,7 @@ import { IProduit } from 'src/app/core/interfaces/IProduit';
 import { Component, OnInit, Input } from '@angular/core';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { PanierSvcService } from 'src/app/core/services/panier-svc.service';
+import { of } from 'rxjs';
 
 // Format des items accepté par le composant ng-image-slider
 export interface IImageSlider{
@@ -26,31 +27,47 @@ export interface IImageSlider{
 
 export class ProduitDisplayDetailsComponent implements OnInit {
 
-  constructor(private panierSvc: PanierSvcService,
-              private httpClient: HttpClient,
+  constructor(private httpClient: HttpClient,
               private appConfig: AppConfig,
               private sessionSvc: SessionService) { }
 
   @Input() idProduit: number;
 
-  produit: IProduit;
+  produit: Promise<IProduit>;
   arrayImgSlider: IImageSlider[] = new Array();
 
   async ngOnInit(): Promise<void> {
-    this.produit = await this.loadHttpProduit();
-    const arrayPromiseImg: Array<Promise<string>> = new Array();
-    this.produit.imgFileName.forEach(element => {
-      const promise: Promise<string> = this.loadHttpProduitImg(element);
-      arrayPromiseImg.push(promise);
-      promise.then( base64 => {
-        this.arrayImgSlider.push({
-          image: base64,
-          thumbImage: base64,
-          alt: '',
-          title: ''
-        } as IImageSlider);
-      });
-    });
+    this.produit = this.getAsyncData();
+    // this.produit = await this.loadHttpProduit();
+    // const arrayPromiseImg: Array<Promise<string>> = new Array();
+    // this.produit.imgFileName.forEach(element => {
+    //   const promise: Promise<string> = this.loadHttpProduitImg(element);
+    //   arrayPromiseImg.push(promise);
+    //   promise.then( base64 => {
+    //     this.arrayImgSlider.push({
+    //       image: base64,
+    //       thumbImage: base64,
+    //       alt: '',
+    //       title: ''
+    //     } as IImageSlider);
+    //   });
+    // });
+  }
+
+  getAsyncData(): Promise<IProduit> {
+    // Fake Slow Async Data
+    const produitTest: IProduit = {
+      commission: 0,
+      delaiProduction: 0,
+      description: 'Description',
+      idCategorie: 0,
+      idCommerce: 0,
+      isAvailable: true,
+      nom: 'La bonne baguette',
+      prix: 2,
+      stock: 500
+    };
+    return of(produitTest).toPromise();
   }
 
   async loadHttpProduit(): Promise<IProduit> {
@@ -73,14 +90,6 @@ export class ProduitDisplayDetailsComponent implements OnInit {
 
   onClickCommerce(): void{
 
-  }
-
-  onClickRemove(): void {
-    this.panierSvc.removeOneNbrProduitPanier(this.produit);
-  }
-
-  onClickAdd(): void {
-    this.panierSvc.addOneNbrProduitPanier(this.produit);
   }
 
 }
