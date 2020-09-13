@@ -28,6 +28,7 @@ export class PanierSvcService {
 
   lstProduit: Array<IProduit>;
   currentLstProduits: IPanier;
+  lstProduitsPanierLivraison: Array<any>;
 
     get lstProduitPanier(): IProduit[]{
       if(this.lstProduit === undefined){

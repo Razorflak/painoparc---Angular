@@ -13,6 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommandeValidePageComponent } from './commande-valide-page/commande-valide-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { CommndeLivraisonPageComponent } from './commnde-livraison-page/commnde-livraison-page.component';
 
 
 
@@ -32,7 +33,8 @@ export const yourRouting = RouterModule.forChild(yourRoutes);
   declarations: [LoginPageComponent,
   ProduitsCommandePageComponent,
   CommandeValidePageComponent,
-  RegisterPageComponent],
+  RegisterPageComponent,
+  CommndeLivraisonPageComponent],
   imports: [
     CommonModule,
     ComponentsModule,

@@ -1,0 +1,30 @@
+<mat-card>
+  <div class="cardContent">
+      <div class="tileImg">
+        <img src="/assets/img/Baguette_Tradition.jpg" alt="Photo of a Shiba Inu">
+      </div>
+      <div class="divRight">
+        <div class="tileTitre">
+          <div class="divGridTile">
+            {{produitReference.nom}}
+          </div>
+        </div>
+        <div class="tileLivraison">
+          <div *ngFor="let produit of arrayProduit" >
+            <div>
+              Qte: {{produit.Panier_Produit.nbrProduit}}
+            </div>
+            <div>
+              Date de livraison: {{produit.dateLivraison}}
+            </div>
+            <div>
+              <button (click)="OnDeleteItemLivraison(produit)" >Remove</button>
+            </div>
+          </div>
+          <div>
+            <button (click)="onAddItemLivraison()" >Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</mat-card>

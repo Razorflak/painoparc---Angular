@@ -18,4 +18,7 @@ export interface IProduit{
   Commandes?: Array<ICommande>;
   Categorie?: ICategorie;
   Commerce?: ICommerce;
+
+  dateLivraisonPossible?: Date;
+  dateLivraison?: Date;
 }

@@ -6,10 +6,11 @@ import { ProduitCommandeCardsComponent } from './produit-commande-cards/produit-
 import { PanierCommandeComponent } from './panier-commande/panier-commande.component';
 import { ProduitPanierComponent } from './produit-panier/produit-panier.component';
 import { ProduitDisplayDetailsComponent } from './produit-display-details/produit-display-details.component';
+import { ProduitLivraisonCardComponent } from './produit-livraison-card/produit-livraison-card.component';
 
 
 @NgModule({
-  declarations: [ProduitCommandeCardsComponent, PanierCommandeComponent, ProduitPanierComponent, ProduitDisplayDetailsComponent],
+  declarations: [ProduitCommandeCardsComponent, PanierCommandeComponent, ProduitPanierComponent, ProduitDisplayDetailsComponent, ProduitLivraisonCardComponent],
   imports: [
     CommonModule,
     MaterialAngularModule,
