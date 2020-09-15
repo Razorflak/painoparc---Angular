@@ -10,7 +10,12 @@ import { ProduitLivraisonCardComponent } from './produit-livraison-card/produit-
 
 
 @NgModule({
-  declarations: [ProduitCommandeCardsComponent, PanierCommandeComponent, ProduitPanierComponent, ProduitDisplayDetailsComponent, ProduitLivraisonCardComponent],
+  declarations: [
+    ProduitCommandeCardsComponent,
+    PanierCommandeComponent,
+    ProduitPanierComponent,
+    ProduitDisplayDetailsComponent,
+    ProduitLivraisonCardComponent],
   imports: [
     CommonModule,
     MaterialAngularModule,
@@ -18,7 +23,8 @@ import { ProduitLivraisonCardComponent } from './produit-livraison-card/produit-
   ],
   exports: [
     ProduitCommandeCardsComponent,
-    PanierCommandeComponent
+    PanierCommandeComponent,
+    ProduitLivraisonCardComponent
   ]
 })
 export class ComponentsModule { }

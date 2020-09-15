@@ -13,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommandeValidePageComponent } from './commande-valide-page/commande-valide-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
-import { CommndeLivraisonPageComponent } from './commnde-livraison-page/commnde-livraison-page.component';
+import { CommandeLivraisonPageComponent } from './commande-livraison-page/commande-livraison-page.component';
 
 
 
@@ -21,7 +21,7 @@ const yourRoutes: Routes = [
   { path: '',  component: LoginPageComponent },
   { path: 'login',  component: LoginPageComponent },
   { path: 'commander',  component: ProduitsCommandePageComponent },
-  { path: 'valider_commande', component: CommandeValidePageComponent},
+  { path: 'valider_commande', component: CommandeLivraisonPageComponent},
   { path: 'register', component: RegisterPageComponent},
   { path: '**',  component: LoginPageComponent }
 ];
@@ -34,7 +34,7 @@ export const yourRouting = RouterModule.forChild(yourRoutes);
   ProduitsCommandePageComponent,
   CommandeValidePageComponent,
   RegisterPageComponent,
-  CommndeLivraisonPageComponent],
+  CommandeLivraisonPageComponent],
   imports: [
     CommonModule,
     ComponentsModule,

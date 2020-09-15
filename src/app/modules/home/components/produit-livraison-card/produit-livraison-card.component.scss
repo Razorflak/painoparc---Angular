@@ -1,0 +1,104 @@
+.mainDiv {
+  display:inline-flex;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cardProduit {
+  display: flex;
+  max-width: 700px;
+  min-width: 200px;
+  width: 100%;
+  padding: 5px;
+  margin: 7px;
+  box-sizing: border-box;
+}
+
+.cardContent{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.divRight {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tileImg {
+  min-width: 120px;
+  max-width: 120px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.tileImg img{
+  height:100px;
+
+}
+
+.tileTitre {
+  font-size: large;
+  line-height: 15px;
+}
+
+.tileDescription {
+  height: 45%;
+  font-size: small;
+  line-height: 12px;
+  margin-right: 10px;
+}
+
+.tileAction {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-size: 24px;
+}
+
+.divGridTile {
+  width: 100%;
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+  align-items: center;
+}
+
+
+
+
+.nbrProduit{
+  display: flex;
+  min-width: 40px;
+  justify-content: center;
+}
+
+
+
+.divAction{
+  margin-left: 20px;
+}
+
+.actionButton {
+  width: 24px;
+  height: 24px;
+}
+
+.actionButton mat-icon {
+  font-size: 16px;
+  margin-top: -8px;
+}
+
+.divPrixProduit{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: initial;
+}
+
+.divInfoLivraison{
+  display: flex;
+  flex-direction: row;
+}

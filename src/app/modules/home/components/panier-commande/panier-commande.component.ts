@@ -1,6 +1,7 @@
 import { PanierSvcService } from 'src/app/core/services/panier-svc.service';
 import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { IProduit } from 'src/app/core/interfaces/IProduit';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-panier-commande',
@@ -9,7 +10,8 @@ import { IProduit } from 'src/app/core/interfaces/IProduit';
 })
 export class PanierCommandeComponent implements OnInit, DoCheck {
 
-  constructor(private panierSvc: PanierSvcService) { }
+  constructor(private panierSvc: PanierSvcService,
+              private router: Router) { }
   @Input() lstProduitPanier: Array<IProduit>;
   lstProduitNofFilter: Array<IProduit>;
 
@@ -30,5 +32,11 @@ export class PanierCommandeComponent implements OnInit, DoCheck {
     this.sousTotalProduit = this.panierSvc.getSousTotalPanier();
     this.commission = 1;
     this.total = this.sousTotalProduit + this.commission;
+  }
+
+  onClickValidPanier(): void{
+    // TODO: Sauvegarde du panier et faire le navigate sur le retour
+    this.panierSvc.saveProduitsLocalStorage();
+    this.router.navigate(['/valider_commande']);
   }
 }

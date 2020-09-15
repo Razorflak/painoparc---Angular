@@ -28,10 +28,14 @@ export class PanierSvcService {
 
   lstProduit: Array<IProduit>;
   currentLstProduits: IPanier;
-  lstProduitsPanierLivraison: Array<any>;
+
 
     get lstProduitPanier(): IProduit[]{
-      if(this.lstProduit === undefined){
+      const lstProduitLS: IProduit[] = JSON.parse(window.localStorage.getItem('currentPanier'));
+      if (this.lstProduit === undefined){
+        if ( lstProduitLS !== undefined){
+          return lstProduitLS;
+        }
         return null;
       }
       return this.lstProduit.filter(prod => prod.Panier_Produit != null && prod.Panier_Produit.nbrProduit > 0);

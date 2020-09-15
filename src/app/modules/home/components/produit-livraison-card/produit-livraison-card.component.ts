@@ -2,6 +2,7 @@ import { IProduit } from './../../../../core/interfaces/IProduit';
 import { Component, Input, OnInit } from '@angular/core';
 import { PanierSvcService } from 'src/app/core/services/panier-svc.service';
 
+
 @Component({
   selector: 'app-produit-livraison-card',
   templateUrl: './produit-livraison-card.component.html',
@@ -19,7 +20,8 @@ export class ProduitLivraisonCardComponent implements OnInit {
   }
 
   OnDeleteItemLivraison(produit: IProduit): void{
-    this.arrayProduit.slice(this.arrayProduit.indexOf(produit, 1));
+    const indx: number = this.arrayProduit.indexOf(produit);
+    this.arrayProduit = this.arrayProduit.filter( item => item !== produit);
   }
 
   onAddItemLivraison(): void{
