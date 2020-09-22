@@ -68,7 +68,7 @@ export class PanierSvcService {
       };
     }
     produit.Panier_Produit.nbrProduit += 1;
-
+    this.saveProduitsLocalStorage();
     // TODO sans doute règle de gestion à ajouté pour limité l'ajout par rapport au stock
   }
 
@@ -86,6 +86,8 @@ export class PanierSvcService {
     if (produit.Panier_Produit.nbrProduit >= 1){
       produit.Panier_Produit.nbrProduit -= 1;
     }
+
+    this.saveProduitsLocalStorage();
     // TODO sans doute règle de gestion à ajouté pour limité l'ajout par rapport au stock
   }
 

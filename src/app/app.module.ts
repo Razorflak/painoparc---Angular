@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppConfig } from './config/app-config';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
   return () => {
@@ -37,7 +38,8 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
       multi: true,
       deps: [JsonAppConfigService],
       useFactory: initializerFn
-    }
+    },
+    {provide: MAT_DATE_LOCALE, useValue: 'fr'}
   ],
   bootstrap: [AppComponent]
 })

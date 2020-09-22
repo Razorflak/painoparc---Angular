@@ -18,13 +18,16 @@ export class CommandeLivraisonPageComponent implements OnInit {
     this.lstProduitsPanierLivraison = new Array();
     this.panierSvc.lstProduitPanier.forEach(element => {
       if (element.dateLivraison === undefined){
+        // Remplissage des éléments manquantpour la date de livraison
+        element.dateLivraisonPossible = new Date();
+        const delai = element.delaiProduction === undefined ? 1 : element.delaiProduction;
+        element.dateLivraisonPossible.setDate( element.dateLivraisonPossible.getDate() + delai );
         element.dateLivraison = element.dateLivraisonPossible;
       }
       this.lstProduitsPanierLivraison.push([element]);
     });
 
-
-
+    // TODO Ajouter un event sur lstProduitsPanierLivraison pour que l'array de panierSvc suive!
   }
 
 }

@@ -1,0 +1,21 @@
+.divInfoLivraison{
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.tileAction {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-size: 24px;
+}
+
+.divGridTile {
+  width: 100%;
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+  align-items: center;
+}

@@ -12,35 +12,7 @@
           </div>
           <div class="tileLivraison">
             <div *ngFor="let produit of arrayProduit" >
-              <div class="divInfoLivraison">
-                  <!--Qte: {{produit.Panier_Produit.nbrProduit}}-->
-                  <div class="divGridTile divAction">
-                    <button mat-icon-button color="primary" (click)="onClickRemove()">
-                      <mat-icon>remove_circle_outline</mat-icon>
-                    </button>
-                    <div class="spanNbrProduit">
-                      <span >
-                        {{produit.Panier_Produit.nbrProduit}}
-                      </span>
-                    </div>
-                    <button mat-icon-button color="primary" (click)="onClickAdd()">
-                      <mat-icon>add_circle_outline</mat-icon>
-                    </button>
-                    <div>
-                      <input matInput [matDatepicker]="picker" [value]="produit.dateLivraison | date:'yyyy-MM-dd'">
-                      <mat-datepicker #picker ></mat-datepicker>
-
-                      <button mat-icon-button (click)="picker.open()" color="">
-                        <mat-icon>calendar_today</mat-icon>
-                      </button>
-                      <!--Date de livraison: {{produit.dateLivraison}}-->
-                    </div>
-                  </div>
-                <div>
-                  <button mat-stroked-button (click)="OnDeleteItemLivraison(produit)">Basic</button>
-                </div>
-              </div>
-
+              <app-produit-qte-date-livraison [produit]="produit" [arrayProduit]="arrayProduit"></app-produit-qte-date-livraison>
             </div>
             <div>
               <button mat-button (click)="onAddItemLivraison()">Livraison supplémentaire</button>

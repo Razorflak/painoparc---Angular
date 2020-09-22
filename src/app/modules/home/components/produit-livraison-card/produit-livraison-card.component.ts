@@ -19,10 +19,6 @@ export class ProduitLivraisonCardComponent implements OnInit {
     this.produitReference = this.arrayProduit[0];
   }
 
-  OnDeleteItemLivraison(produit: IProduit): void{
-    const indx: number = this.arrayProduit.indexOf(produit);
-    this.arrayProduit = this.arrayProduit.filter( item => item !== produit);
-  }
 
   onAddItemLivraison(): void{
     const newItem = JSON.parse(JSON.stringify(this.produitReference));

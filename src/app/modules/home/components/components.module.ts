@@ -7,6 +7,7 @@ import { PanierCommandeComponent } from './panier-commande/panier-commande.compo
 import { ProduitPanierComponent } from './produit-panier/produit-panier.component';
 import { ProduitDisplayDetailsComponent } from './produit-display-details/produit-display-details.component';
 import { ProduitLivraisonCardComponent } from './produit-livraison-card/produit-livraison-card.component';
+import { ProduitQteDateLivraisonComponent } from './produit-qte-date-livraison/produit-qte-date-livraison.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ProduitLivraisonCardComponent } from './produit-livraison-card/produit-
     PanierCommandeComponent,
     ProduitPanierComponent,
     ProduitDisplayDetailsComponent,
-    ProduitLivraisonCardComponent],
+    ProduitLivraisonCardComponent,
+    ProduitQteDateLivraisonComponent],
   imports: [
     CommonModule,
     MaterialAngularModule,

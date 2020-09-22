@@ -1,0 +1,25 @@
+<div class="divInfoLivraison">
+  <!--Qte: {{produit.Panier_Produit.nbrProduit}}-->
+  <div class="divGridTile divAction">
+    <button mat-icon-button color="primary" (click)="onClickRemove()">
+      <mat-icon>remove_circle_outline</mat-icon>
+    </button>
+    <div class="spanNbrProduit">
+      <span >
+        {{produit.Panier_Produit.nbrProduit}}
+      </span>
+    </div>
+    <button mat-icon-button color="primary" (click)="onClickAdd()">
+      <mat-icon>add_circle_outline</mat-icon>
+    </button>
+    <div>
+      <input matInput [matDatepicker]="picker" (dateChange)="onDateChange('change', $event)"
+        [value]="produit.dateLivraisonPossible" disabled>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker disabled="false"></mat-datepicker>
+    </div>
+  </div>
+  <div>
+    <button mat-stroked-button (click)="OnDeleteItemLivraison(produit)" *ngIf="arrayProduit.length > 1" >Supprimer</button>
+  </div>
+</div>
