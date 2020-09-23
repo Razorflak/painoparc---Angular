@@ -12,17 +12,18 @@ export class ProduitLivraisonCardComponent implements OnInit {
 
   constructor(private panierSvc: PanierSvcService) { }
 
-  @Input() arrayProduit: Array<IProduit>;
-  produitReference: IProduit;
+  arrayProduit: Array<IProduit>;
+  @Input() produitReference: IProduit;
 
   ngOnInit(): void {
-    this.produitReference = this.arrayProduit[0];
+    this.arrayProduit = this.panierSvc.lstProduitPanier.filter(element => element.id === this.produitReference.id);
   }
 
 
   onAddItemLivraison(): void{
     const newItem = JSON.parse(JSON.stringify(this.produitReference));
-    this.arrayProduit.push(newItem);
+    this.panierSvc.lstProduitPanier.push(newItem);
+    this.arrayProduit = this.panierSvc.lstProduitPanier.filter(element => element.id === this.produitReference.id);
   }
 
 }

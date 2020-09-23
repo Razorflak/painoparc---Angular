@@ -22,13 +22,26 @@ export class PanierSvcService {
 
 
 
+
   constructor(private httpClient: HttpClient,
               private appConfig: AppConfig,
               private sessionSvc: SessionService) { }
 
   lstProduit: Array<IProduit>;
   currentLstProduits: IPanier;
+  private dateLivraisonSvc: Date;
 
+  get dateLivraison(): Date {
+    if (this.dateLivraisonSvc === undefined){
+      this.dateLivraisonSvc = new Date();
+      this.dateLivraisonSvc.setDate((new Date()).getDate() + 1);
+    }
+    return this.dateLivraisonSvc;
+  }
+
+  set dateLivraison(value: Date){
+    this.dateLivraisonSvc = value;
+  }
 
     get lstProduitPanier(): IProduit[]{
       const lstProduitLS: IProduit[] = JSON.parse(window.localStorage.getItem('currentPanier'));
@@ -92,11 +105,11 @@ export class PanierSvcService {
   }
 
   getSousTotalPanier(): number{
-    if (this.lstProduit === undefined){
+    if (this.lstProduitPanier === undefined){
       return 0;
     }
     let sousTotal = 0;
-    this.lstProduit.forEach(produit => {
+    this.lstProduitPanier.forEach(produit => {
       if (produit.Panier_Produit != null){
         sousTotal += produit.Panier_Produit.nbrProduit * produit.prix;
       }

@@ -14,9 +14,9 @@ export class ProduitQteDateLivraisonComponent implements OnInit, DoCheck {
   constructor(private panierSvc: PanierSvcService) { }
 
   @Input() produit: IProduit;
-  @Input() arrayProduit: IProduit[];
-
+  panier: IProduit[];
   ngOnInit(): void {
+    this.panier = this.panierSvc.lstProduitPanier;
 
 
   }
@@ -37,9 +37,10 @@ export class ProduitQteDateLivraisonComponent implements OnInit, DoCheck {
     this.panierSvc.addOneNbrProduitPanier(this.produit);
   }
 
-  OnDeleteItemLivraison(produit): void{
-    const indx: number = this.arrayProduit.indexOf(produit);
-    this.arrayProduit = this.arrayProduit.filter( item => item !== produit);
+  OnDeleteItemLivraison(produit: IProduit): void{
+    /*const indx: number = this.panierSvc.lstProduitPanier.indexOf(produit);
+    this.panierSvc.lstProduitPanier = this.panierSvc.lstProduitPanier.filter( item => item !== produit);*/
+    produit.Panier_Produit.nbrProduit = 0;
   }
 
   /**

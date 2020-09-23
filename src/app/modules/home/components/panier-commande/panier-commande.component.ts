@@ -12,8 +12,7 @@ export class PanierCommandeComponent implements OnInit, DoCheck {
 
   constructor(private panierSvc: PanierSvcService,
               private router: Router) { }
-  @Input() lstProduitPanier: Array<IProduit>;
-  lstProduitNofFilter: Array<IProduit>;
+  lstProduitPanier: Array<IProduit>;
 
   sousTotalProduit;
   commission;
@@ -21,14 +20,10 @@ export class PanierCommandeComponent implements OnInit, DoCheck {
   total;
 
   ngOnInit(): void {
-    this.lstProduitNofFilter = this.lstProduitPanier;
+    this.lstProduitPanier = this.panierSvc.lstProduitPanier;
   }
 
   ngDoCheck(): void {
-    if (this.lstProduitNofFilter === undefined){
-      return;
-    }
-    this.lstProduitPanier = this.lstProduitNofFilter.filter(prod => prod.Panier_Produit != null && prod.Panier_Produit.nbrProduit > 0);
     this.sousTotalProduit = this.panierSvc.getSousTotalPanier();
     this.commission = 1;
     this.total = this.sousTotalProduit + this.commission;

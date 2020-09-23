@@ -6,6 +6,7 @@ import { PanierSvcService } from './../../../../core/services/panier-svc.service
 import { IProduit } from './../../../../core/interfaces/IProduit';
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 
 @Component({
@@ -24,19 +25,23 @@ export class ProduitsCommandePageComponent implements OnInit, DoCheck {
   nbrProduitCommande: number;
   sousTotal: number;
   panier: IPanier;
+  dateLivraison: Date;
 
   ngOnInit(): void {
+
     this.panierSvc.loadHttpLstProduitCommandable().then(result => {
       this.lstProduit = result;
       this.panierSvc.lstProduit = result;
       const lstProduitLS: IProduit[] = JSON.parse(window.localStorage.getItem('currentPanier'));
       if (lstProduitLS !== null){
-        console.log(result);
-        console.log(lstProduitLS);
         this.panierSvc.mergeQteLstProduitsLocalStorage(result, lstProduitLS);
       }
       this.createLstCategorie(this.lstProduit);
     });
+
+    // Définition de la date de livraison par défaut
+    this.dateLivraison = new Date();
+    this.dateLivraison.setDate((new Date()).getDate() + 1);
   }
 
   createLstCategorie(lstProduit: IProduit[]): void{
@@ -60,6 +65,10 @@ export class ProduitsCommandePageComponent implements OnInit, DoCheck {
     this.sousTotal = this.panierSvc.getSousTotalPanier();
     this.nbrProduitCommande = this.panierSvc.getNbrProduitPanier();
     this.panierSvc.saveProduitsLocalStorage();
+  }
+
+  onDateChange(type: string, event: MatDatepickerInputEvent<Date>): void {
+
   }
 
   onClickValidPanier(): void{

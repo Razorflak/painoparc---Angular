@@ -14,14 +14,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommandeValidePageComponent } from './commande-valide-page/commande-valide-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { CommandeLivraisonPageComponent } from './commande-livraison-page/commande-livraison-page.component';
+import { CommandeCommercesPageComponent } from './commande-commerces-page/commande-commerces-page.component';
 
 
 
 const yourRoutes: Routes = [
   { path: '',  component: LoginPageComponent },
   { path: 'login',  component: LoginPageComponent },
-  { path: 'commander',  component: ProduitsCommandePageComponent },
-  { path: 'valider_commande', component: CommandeLivraisonPageComponent},
+  // { path: 'commander',  component: ProduitsCommandePageComponent },
+  { path: 'commander',  component: CommandeCommercesPageComponent },
+  { path: 'valider_commande', component: CommandeValidePageComponent},
   { path: 'register', component: RegisterPageComponent},
   { path: '**',  component: LoginPageComponent }
 ];
@@ -34,7 +36,8 @@ export const yourRouting = RouterModule.forChild(yourRoutes);
   ProduitsCommandePageComponent,
   CommandeValidePageComponent,
   RegisterPageComponent,
-  CommandeLivraisonPageComponent],
+  CommandeLivraisonPageComponent,
+  CommandeCommercesPageComponent],
   imports: [
     CommonModule,
     ComponentsModule,

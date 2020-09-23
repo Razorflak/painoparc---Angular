@@ -8,6 +8,7 @@ import { ProduitPanierComponent } from './produit-panier/produit-panier.componen
 import { ProduitDisplayDetailsComponent } from './produit-display-details/produit-display-details.component';
 import { ProduitLivraisonCardComponent } from './produit-livraison-card/produit-livraison-card.component';
 import { ProduitQteDateLivraisonComponent } from './produit-qte-date-livraison/produit-qte-date-livraison.component';
+import { CommerceCommandeCardComponent } from './commerce-commande-card/commerce-commande-card.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ProduitQteDateLivraisonComponent } from './produit-qte-date-livraison/p
     ProduitPanierComponent,
     ProduitDisplayDetailsComponent,
     ProduitLivraisonCardComponent,
-    ProduitQteDateLivraisonComponent],
+    ProduitQteDateLivraisonComponent,
+    CommerceCommandeCardComponent],
   imports: [
     CommonModule,
     MaterialAngularModule,
@@ -26,7 +28,8 @@ import { ProduitQteDateLivraisonComponent } from './produit-qte-date-livraison/p
   exports: [
     ProduitCommandeCardsComponent,
     PanierCommandeComponent,
-    ProduitLivraisonCardComponent
+    ProduitLivraisonCardComponent,
+    CommerceCommandeCardComponent
   ]
 })
 export class ComponentsModule { }

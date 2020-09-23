@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="content">
-  <ng-container *ngIf="lstProduit!==undefined" >
+  <ng-container *ngIf="lstCommerces!==undefined" >
     <div class="divLeftScreen">
       <div class="divDateLivraison">
         <mat-form-field appearance="outline">
@@ -11,11 +11,8 @@
           <mat-datepicker #picker disabled="false"></mat-datepicker>
         </mat-form-field>
       </div>
-      <div class="divCategorie"  *ngFor="let categorie of lstCategorie">
-        <p>{{categorie.libelle}}</p>
-        <div class="divProduit" >
-          <app-produit-commande-cards *ngFor="let produit of categorie.produits" [produit] = "produit"></app-produit-commande-cards>
-        </div>
+      <div class="divCommerce"  *ngFor="let categorie of lstCommerces">
+        <app-commerce-commande-card></app-commerce-commande-card>
       </div>
    </div>
     <div class="divPanier">

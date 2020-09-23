@@ -12,7 +12,7 @@
           </div>
           <div class="tileLivraison">
             <div *ngFor="let produit of arrayProduit" >
-              <app-produit-qte-date-livraison [produit]="produit" [arrayProduit]="arrayProduit"></app-produit-qte-date-livraison>
+              <app-produit-qte-date-livraison [produit]="produit"></app-produit-qte-date-livraison>
             </div>
             <div>
               <button mat-button (click)="onAddItemLivraison()">Livraison supplémentaire</button>
