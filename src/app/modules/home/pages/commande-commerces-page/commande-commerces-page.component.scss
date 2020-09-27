@@ -50,49 +50,9 @@
   padding-right: 50px;
 }
 
-.divBtnValiderPanierMobil {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  min-width: 100%;
-  visibility: hidden;
-}
 
-.divBtnValiderPanierMobil > button:first-child {
-  width: 100%;
-  min-height: 75px;
-}
 
-.divBtnPanierMobil{
-  display: flex;
-  flex-direction: row;
-}
 
-.divLeftButton{
-  display: flex;
-  justify-content: center;
-  width: 20%;
-}
-
-.divLeftButton button {
-  font-size: large;
-}
-
-.divMidButton{
-  display: flex;
-  width: 60%;
-  align-items: center;
-  justify-content: center;
-  font-size: large;
-}
-
-.divRightButton{
-  display: flex;
-  width: 20%;
-  align-items: center;
-  justify-content: center;
-  font-size: x-large;
-}
 
 // Retrait de la parti panier pour les mobil
 @media (max-width : 770px) {
@@ -110,9 +70,6 @@
   .divProduit app-produit-commande-cards {
     max-width: 100%;
     margin-left: 0px;
-  }
-  .divBtnValiderPanierMobil {
-    visibility: visible;
   }
   .content {
     margin-bottom: 100px;

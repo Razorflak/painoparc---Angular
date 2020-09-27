@@ -21,11 +21,11 @@ import { CommandeCommercesPageComponent } from './commande-commerces-page/comman
 const yourRoutes: Routes = [
   { path: '',  component: LoginPageComponent },
   { path: 'login',  component: LoginPageComponent },
-  // { path: 'commander',  component: ProduitsCommandePageComponent },
+  { path: 'produit_commerce/:idCommerce',  component: ProduitsCommandePageComponent },
   { path: 'commander',  component: CommandeCommercesPageComponent },
   { path: 'valider_commande', component: CommandeValidePageComponent},
   { path: 'register', component: RegisterPageComponent},
-  { path: '**',  component: LoginPageComponent }
+  { path: '**',  component: CommandeCommercesPageComponent }
 ];
 
 export const yourRouting = RouterModule.forChild(yourRoutes);

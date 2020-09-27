@@ -10,6 +10,7 @@
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker disabled="false"></mat-datepicker>
         </mat-form-field>
+        <app-navbar-commande [commerce]="commerce | async" *ngIf="commerce !== undefined" ></app-navbar-commande>
       </div>
       <div class="divCategorie"  *ngFor="let categorie of lstCategorie">
         <p>{{categorie.libelle}}</p>
@@ -21,23 +22,7 @@
     <div class="divPanier">
       <app-panier-commande></app-panier-commande>
     </div>
-    <div class="divBtnValiderPanierMobil">
-      <button mat-raised-button color="primary" (click)='onClickValidPanier()'>
-        <div class="divBtnPanierMobil">
-          <div class="divLeftButton">
-            <button mat-fab color="accent">
-              {{nbrProduitCommande}}
-            </button>
-          </div>
-          <div class="divMidButton">
-            Valider mon panier
-          </div>
-          <div class="divRightButton">
-            {{(sousTotal | number:'.2') + " €"}}
-          </div>
-        </div>
-      </button>
-    </div>
+    <app-panier-recap-mobil></app-panier-recap-mobil>
   </ng-container>
 </div>
 

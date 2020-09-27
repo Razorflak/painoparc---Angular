@@ -55,16 +55,17 @@ export class PanierSvcService {
     }
 
   /**
-   * Fonction de récupération de la liste des produits commandable pour le user courant
+   * Fonction de récupération de la liste des produits commandable pour le user courant par Commerce
    */
-  async loadHttpLstProduitCommandable(): Promise<IProduit[]> {
-    const url: string = this.appConfig.apiURL + '/produit/allProduitPourCommande';
+  async loadHttpLstProduitCommandableByCommerce(idCommerce: number): Promise<IProduit[]> {
+    const url: string = this.appConfig.apiURL + '/produit/ProduitByCommerce';
     console.log(url);
     /*const httpOptions = {
       headers: this.sessionSvc.initHttpOption()
     }*/
-    const lstProduit: IProduit[] = await this.httpClient.get<IProduit[]>(this.appConfig.apiURL + '/produit/allProduitPourCommande', {
-      headers: this.sessionSvc.initHttpOption()
+    const lstProduit: IProduit[] = await this.httpClient.get<IProduit[]>(url, {
+      headers: this.sessionSvc.initHttpOption(),
+      params: new HttpParams().set('idCommerce', idCommerce.toString())
     }).toPromise();
     return lstProduit;
   }
@@ -119,10 +120,10 @@ export class PanierSvcService {
 
   getNbrProduitPanier(): number{
     let nbrProduit = 0;
-    if (this.lstProduit === undefined){
+    if (this.lstProduitPanier === undefined){
       return 0;
     }
-    this.lstProduit.forEach(produit => {
+    this.lstProduitPanier.forEach(produit => {
       if (produit.Panier_Produit != null){
         nbrProduit += produit.Panier_Produit.nbrProduit;
       }

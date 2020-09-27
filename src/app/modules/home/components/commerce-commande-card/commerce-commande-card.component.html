@@ -1,1 +1,28 @@
-<p>commerce-commande-card works!</p>
+<div class="mainDiv">
+  <mat-card class="cardCommerce">
+    <div class="cardContent">
+      <div class="tileImg">
+        <img src="/assets/img/Baguette_Tradition.jpg" alt="Photo of a Shiba Inu">
+      </div>
+      <div class="divRight">
+        <div class="tileTitre">
+          <div class="divGridTile">
+            {{commerce.nomCommerce}}
+          </div>
+        </div>
+        <div class="tileDescription">
+          <div class="divGridTile">
+            {{commerce.description}}
+          </div>
+        </div>
+        <div class="tileActivite">
+          <div class="divActivite">
+            <span>{{concatActiviteCommerce}}</span>
+          </div>
+            <button mat-raised-button color="accent" (click)="onClickVoirProduit()">Voir les produits</button>
+        </div>
+      </div>
+    </div>
+
+  </mat-card>
+</div>

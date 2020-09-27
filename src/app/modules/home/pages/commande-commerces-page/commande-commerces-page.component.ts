@@ -1,3 +1,5 @@
+import { ITheme } from './../../../../core/interfaces/ITheme';
+import { ICategorie } from './../../../../core/interfaces/ICategorie';
 import { CommerceService } from 'src/app/core/services/commerce.service';
 import { Router } from '@angular/router';
 import { PanierSvcService } from 'src/app/core/services/panier-svc.service';
@@ -30,6 +32,21 @@ export class CommandeCommercesPageComponent implements OnInit, DoCheck {
     this.commerceSvc.loadHttpLstCommerceUser().then(result => {
       console.log(result);
       this.lstCommerces = result;
+      // Constitution de la liste de Categorie et Theme dans les Objet ICommerce
+      result.forEach(commerce => {
+        const arrayCategorie: ICategorie[] = new Array<ICategorie>();
+        const arrayTheme: ITheme[] = new Array<ITheme>();
+        commerce.Produits.forEach( produit => {
+          if (arrayTheme.filter( theme => theme.id === produit.Categorie.Theme.id).length === 0){
+            arrayTheme.push(produit.Categorie.Theme);
+          }
+          if (arrayCategorie.filter(cat => cat.id === produit.Categorie.id).length === 0){
+            arrayCategorie.push(produit.Categorie);
+          }
+        });
+        commerce.Categories = arrayCategorie;
+        commerce.Themes = arrayTheme;
+      });
       this.filterCommerceDateLivraison();
     });
 
@@ -53,10 +70,6 @@ export class CommandeCommercesPageComponent implements OnInit, DoCheck {
     this.filterCommerceDateLivraison();
   }
 
-  onClickValidPanier(): void{
-    // TODO: Sauvegarde du panier et faire le navigate sur le retour
-    this.panierSvc.saveProduitsLocalStorage();
-    this.router.navigate(['/valider_commande']);
-  }
+
 
 }

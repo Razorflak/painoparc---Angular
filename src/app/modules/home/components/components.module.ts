@@ -9,6 +9,8 @@ import { ProduitDisplayDetailsComponent } from './produit-display-details/produi
 import { ProduitLivraisonCardComponent } from './produit-livraison-card/produit-livraison-card.component';
 import { ProduitQteDateLivraisonComponent } from './produit-qte-date-livraison/produit-qte-date-livraison.component';
 import { CommerceCommandeCardComponent } from './commerce-commande-card/commerce-commande-card.component';
+import { PanierRecapMobilComponent } from './panier-recap-mobil/panier-recap-mobil.component';
+import { NavbarCommandeComponent } from './navbar-commande/navbar-commande.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { CommerceCommandeCardComponent } from './commerce-commande-card/commerce
     ProduitDisplayDetailsComponent,
     ProduitLivraisonCardComponent,
     ProduitQteDateLivraisonComponent,
-    CommerceCommandeCardComponent],
+    CommerceCommandeCardComponent,
+    PanierRecapMobilComponent,
+    NavbarCommandeComponent],
   imports: [
     CommonModule,
     MaterialAngularModule,
@@ -29,7 +33,9 @@ import { CommerceCommandeCardComponent } from './commerce-commande-card/commerce
     ProduitCommandeCardsComponent,
     PanierCommandeComponent,
     ProduitLivraisonCardComponent,
-    CommerceCommandeCardComponent
+    CommerceCommandeCardComponent,
+    PanierRecapMobilComponent,
+    NavbarCommandeComponent
   ]
 })
 export class ComponentsModule { }
