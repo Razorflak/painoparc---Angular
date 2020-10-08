@@ -27,7 +27,7 @@ export class PanierRecapMobilComponent implements OnInit, DoCheck {
   onClickValidPanier(): void{
     // TODO: Sauvegarde du panier et faire le navigate sur le retour
     this.panierSvc.saveProduitsLocalStorage();
-    this.router.navigate(['/valider_commande']);
+    this.router.navigate(['/commande/valider_commande']);
   }
 
 }

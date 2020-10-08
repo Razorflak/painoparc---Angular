@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { CommandeModule } from './modules/commande/commande.module';
 import { JsonAppConfigService } from './config/json-app-config.service';
 import { PagesModule } from './modules/home/pages/pages.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,6 +12,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppConfig } from './config/app-config';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 
+// tslint:disable-next-line: typedef
 export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
   return () => {
     return jsonAppConfigService.load();
@@ -23,9 +26,9 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PagesModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     {
@@ -39,7 +42,9 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
       deps: [JsonAppConfigService],
       useFactory: initializerFn
     },
-    {provide: MAT_DATE_LOCALE, useValue: 'fr'}
+    {
+      provide: MAT_DATE_LOCALE, useValue: 'fr'
+    }
   ],
   bootstrap: [AppComponent]
 })

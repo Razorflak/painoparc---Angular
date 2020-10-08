@@ -8,8 +8,19 @@ import { PagesModule } from './modules/home/pages/pages.module';
  * TODO: 2 autres module sans doute à prévoir pour l'Administration global et un autre pour les Commerces
  */
 const routes: Routes = [
-  {path: '',
-  loadChildren: () => import('./modules/home/pages/pages.module').then(m => m.PagesModule)}
+  {
+    path: '',
+    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: 'commande',
+    loadChildren: () => import('./modules/commande/commande.module').then(m => m.CommandeModule)
+  },
+  {
+    path: 'profil',
+    loadChildren: () => import('./modules/profil-space/profil-space.module').then(m => m.ProfilSpaceModule)
+  }
+
 ];
 
 @NgModule({

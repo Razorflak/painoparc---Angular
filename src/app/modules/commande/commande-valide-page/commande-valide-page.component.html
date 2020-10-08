@@ -1,0 +1,40 @@
+<app-header></app-header>
+<div class="content">
+  <div class="divLeft">
+    <h2 class="titreElem">Livraison</h2>
+    <div class="adresseCamping">
+      <div class="divIcone">
+        <mat-icon>home</mat-icon>
+      </div>
+      <div class="info">
+        <span>{{camping?.lieuReceptionCommande}}</span>
+        <span>{{camping?.nom}}</span>
+        <span>{{camping?.adresse_codePostal + ' ' + camping?.adresse_ville}}</span>
+      </div>
+    </div>
+    <div class="horaireLivraison">
+      <div class="divIcone">
+        <mat-icon>access_time</mat-icon>
+      </div>
+      <div class="info">
+        <span>{{'de ' + camping?.reception_debut + ' à ' + camping?.reception_fin}}</span>
+      </div>
+    </div>
+    <h2 class="titreElem">Paiement</h2>
+    <div class="typePaiement">
+      <div class="divIcone">
+        <mat-icon>payments</mat-icon>
+      </div>
+      <div class="info">
+        <span>sur place, auprès du responsable</span>
+      </div>
+    </div>
+  </div>
+  <div class="divRight">
+    <app-panier-valide-commande></app-panier-valide-commande>
+  </div>
+</div>
+
+
+
+

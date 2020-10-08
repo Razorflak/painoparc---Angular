@@ -1,0 +1,53 @@
+.content{
+  display: flex;
+  flex-direction: row;
+}
+
+.divLeft{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 16px;
+}
+
+.adresseCamping{
+  display: flex;
+}
+
+.horaireLivraison{
+  display: flex;
+}
+
+.typePaiement{
+  display: flex;
+}
+
+.divIcone{
+  display: flex;
+  margin: 10px;
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+h2.titreElem{
+  margin-left: 10px;
+}
+
+.divRight{
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+}
+
+
+// Retrait de la parti panier pour les mobil
+@media (max-width : 770px) {
+  .content{
+    display: flex;
+    flex-direction: column;
+  }
+}

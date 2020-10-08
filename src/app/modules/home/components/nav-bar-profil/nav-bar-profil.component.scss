@@ -1,0 +1,137 @@
+.content{
+  background-color: #FFFFFF;
+  color: #FFFFFF;
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 0 0 2rem rgba(115,129,136,.2);
+}
+
+.headerNavBar{
+  display: none;
+  color: #2B3336;
+  font-size: 18px;
+  padding: 8px;
+}
+
+
+
+.dropDownMenu{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.menuOpen{
+	max-height: 500px;
+}
+
+.menuHide{
+	max-height: 500px;
+}
+
+.menuContent a {
+  font-size: 16px;
+  padding: 8px;
+  font-family: Sana Sans Alt Regular,Helvetica,Arial,sans-serif;
+  color: #2B3336;
+  background-color: #FFFFFF;
+  text-decoration: none;
+}
+
+.active::before{
+    content: '•  ';
+    color: #4fc882;
+    width: 10px;
+    height: 10px;
+}
+
+.active {
+  font-weight: bold;
+}
+
+mat-divider{
+  border-top-color: grey;
+}
+
+.menuContent{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.menu{
+  display: flex;
+  flex-direction: column;
+}
+
+.divBtnDeconnecter{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  width: 100%;
+}
+
+@font-face {
+  font-family: sansSana;
+  src: url(/src/assets/font/SanaSansAltBlack.ttf) format("opentype");
+}
+
+@media (max-width : 770px) {
+  .headerNavBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .headerOpen{
+    color: #2B3336;
+    transform: rotate(180deg);
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+  }
+
+  .headerClose{
+    color: #2B3336;
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+  }
+
+  .dropDownMenu{
+    display: flex;
+    z-index: 10;
+    transition-property: max-height;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    overflow: hidden;
+
+  }
+
+  .menuOpen{
+    max-height: 500px;
+
+  }
+
+  .menuHide{
+    max-height: 0px;
+  }
+
+  .content{
+    padding: 0px;
+    border-radius: 0px;
+  }
+
+  .menuContent{
+    width: 100%;
+    margin: 0 0 0 0;
+
+  }
+
+  .divBtnDeconnecter{
+    margin-bottom: 16px;
+  }
+}
+

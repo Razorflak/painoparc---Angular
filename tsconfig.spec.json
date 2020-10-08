@@ -13,6 +13,6 @@
   ],
   "include": [
     "src/**/*.spec.ts",
-    "src/**/*.d.ts"
+    "src/**/*.d.ts", "src/app/modules/commande/commande-produit-page/commande-produit-page.component.ts"
   ]
 }

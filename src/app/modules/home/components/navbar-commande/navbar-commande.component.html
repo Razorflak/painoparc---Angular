@@ -1,5 +1,5 @@
 <div>
   <button mat-button (click)="onClickBackToCommerce()">Commerces</button>
-  <span>{{commerce.nomCommerce | async}}</span>
+  <span *ngIf="commerce" >{{commerce.nomCommerce}}</span>
 </div>
 

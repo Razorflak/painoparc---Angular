@@ -1,0 +1,11 @@
+<div class="content">
+  <h2>Mes commandes</h2>
+  <ng-container *ngIf="lstCommande" >
+    <div class="lstCommande">
+      <mat-accordion class="groupPanel" multi displayMode="flat">
+        <app-commande-expan-panel *ngFor="let commande of lstCommande" [commande]="commande"></app-commande-expan-panel>
+      </mat-accordion>
+    </div>
+  </ng-container>
+
+</div>

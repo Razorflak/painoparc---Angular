@@ -1,0 +1,50 @@
+.content {
+  display:flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.divDateLivraison{
+  display: flex;
+  flex-direction: row;
+}
+
+.divCommerce{
+  display: flex;
+  width: 100%;
+}
+
+app-commerce-commande-card{
+  display: flex;
+  width: 100%;
+}
+
+
+
+
+// Retrait de la parti panier pour les mobil
+@media (max-width : 770px) {
+  .divLeftScreen {
+    width: 100%;
+  }
+  .divProduit {
+    max-width: 100%;
+    margin-left: 0px;
+    justify-content: flex-start;
+  }
+  .divProduit app-produit-commande-cards {
+    max-width: 100%;
+    margin-left: 0px;
+  }
+  .content {
+    margin-bottom: 100px;
+  }
+
+
+
+}
+
+.divPanier app-panier-commande{
+  min-width: 350px;
+}

@@ -33,7 +33,7 @@ export class AuthService {
           this.authSvc.setAuth(true, data.user.id, data.token);
           // Navigation vers la page de Commande
           // TODO sera sans doute à modifier une fois la page d'accueil faite
-          this.router.navigate(['/commander']);
+          this.router.navigate(['/commande']);
 
         },
         err => {

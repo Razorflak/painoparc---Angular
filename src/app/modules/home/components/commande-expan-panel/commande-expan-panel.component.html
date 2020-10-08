@@ -1,0 +1,60 @@
+<mat-expansion-panel hideToggle>
+  <mat-expansion-panel-header class="headerPanel">
+    <mat-panel-title class="titleHeaderPanel">
+     {{'Commande du ' + (commande.dateCommande | date:'dd/MM/yyyy')}}
+    </mat-panel-title>
+    <mat-panel-description class="descHearderPanel">
+      <div class="infoHeader">
+        {{(totalCommande | number:'.2') + ' €'}}
+      </div>
+      <div class="actionHeader">
+        <button mat-icon-button (click)="deleteCommande($event)" color="warn" *ngIf="!isCommandeConfirme" >
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteCommande($event)" color="accent" *ngIf="isLivre" >
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+
+
+      </div>
+
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="contentPanel">
+    <div class="produitContent" *ngFor="let produit of livraison.LivraisonProduits" >
+      <div class="produitInfo">
+        <span>{{produit.nom}}</span>
+      </div>
+      <div class="produitPrix">
+        <span>{{(produit.prix | number:'.2') + ' €'}}</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="recapCommande">
+      <div class="infoCommande">
+        <div class="libelleInfo">
+          <span>Sous total</span>
+        </div>
+        <div class="dataInfo">
+          {{(sousTotalCommande | number:'.2') + ' €'}}
+        </div>
+      </div>
+      <div class="infoCommande">
+        <div class="libelleInfo">
+            <span>Frais de service</span>
+          </div>
+        <div class="dataInfo">
+          {{(commande.commission | number:'.2') + ' €'}}
+        </div>
+      </div>
+      <div class="infoCommande">
+        <div class="libelleInfo">
+          <span>Total</span>
+        </div>
+        <div class="dataInfo">
+          {{((commande.commission + sousTotalCommande) | number:'.2') + ' €'}}
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-expansion-panel>

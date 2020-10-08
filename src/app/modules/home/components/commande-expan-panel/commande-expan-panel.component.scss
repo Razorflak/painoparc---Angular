@@ -1,0 +1,53 @@
+mat-expansion-panel{
+  margin-top: 5px;
+}
+
+mat-expansion-panel-header{
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.descHearderPanel{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 !important;
+}
+
+.infoHeader{
+  display: flex;
+  align-items: center;
+}
+
+.actionHeader{
+  display: flex;
+  align-items: center;
+}
+
+
+.titleHeaderPanel{
+  display: flex;
+  align-items: center;
+}
+
+.panel{
+  display: flex;
+  flex-direction: row;
+}
+
+.produitContent{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.recapCommande{
+  display: flex;
+  flex-direction: column;
+}
+.infoCommande{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}

@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <div class="imgTypo">
+  <div class="imgTypo" (click)="onClickLogo()">
     <img  src="/assets/img/TypoPainOParc.jpg" alt="typo">
   </div>
 
@@ -7,7 +7,29 @@
   <button mat-icon-button class="message-icon">
     <mat-icon>message</mat-icon>
   </button>
-  <button mat-icon-button class="face-icon">
+  <button mat-icon-button class="face-icon" [matMenuTriggerFor]="menu">
       <mat-icon>face</mat-icon>
   </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngIf="isAuth" (click)="switchRouter('profil')">
+      <mat-icon>person</mat-icon>
+      <span>Profil</span>
+    </button>
+    <button mat-menu-item *ngIf="isAuth" (click)="switchRouter('historique')">
+      <mat-icon> shopping_basket</mat-icon>
+      <span>Mes commandes</span>
+    </button>
+    <button mat-menu-item *ngIf="isAuth" (click)="switchRouter('favoris')">
+      <mat-icon>star</mat-icon>
+      <span>Favoris</span>
+    </button>
+    <button mat-menu-item *ngIf="isAuth" (click)="switchRouter('deconnexion')">
+      <mat-icon>cancel</mat-icon>
+      <span>Se déconnecter</span>
+    </button>
+    <button mat-menu-item *ngIf="!isAuth" (click)="switchRouter('connexion')">
+      <mat-icon>dialpad</mat-icon>
+      <span>Se connecter</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>

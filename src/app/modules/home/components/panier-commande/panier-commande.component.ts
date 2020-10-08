@@ -20,18 +20,23 @@ export class PanierCommandeComponent implements OnInit, DoCheck {
   total;
 
   ngOnInit(): void {
-    this.lstProduitPanier = this.panierSvc.lstProduitPanier;
+    this.lstProduitPanier = this.panierSvc.lstProduit;
   }
 
   ngDoCheck(): void {
+    this.lstProduitPanier = this.panierSvc.lstProduit;
     this.sousTotalProduit = this.panierSvc.getSousTotalPanier();
     this.commission = 1;
     this.total = this.sousTotalProduit + this.commission;
   }
 
   onClickValidPanier(): void{
-    // TODO: Sauvegarde du panier et faire le navigate sur le retour
     this.panierSvc.saveProduitsLocalStorage();
-    this.router.navigate(['/valider_commande']);
+    if (this.lstProduitPanier.length > 0){
+      this.router.navigate(['/commande/valider_commande']);
+    }else{
+      // TODO Mesaage d'erreur, sans doute SnackBar
+    }
+
   }
 }

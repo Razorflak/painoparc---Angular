@@ -12,6 +12,7 @@ export class ProduitPanierComponent implements OnInit {
   constructor(private panierSvc: PanierSvcService) { }
 
   @Input() produit: IProduit;
+  @Input() canModifQte = false;
   ngOnInit(): void {
   }
 

@@ -1,0 +1,39 @@
+<mat-card class="mainCard">
+  <ng-container *ngIf="lstCatProduitPanier!==undefined" >
+    <div class="divProduits">
+      <div *ngFor="let cat of lstCatProduitPanier">
+        <h2>{{cat.libelle}}</h2>
+        <app-produit-panier *ngFor="let produit of cat.Produits" [produit] = "produit" [canModifQte] = "true"></app-produit-panier>
+      </div>
+    </div>
+  </ng-container>
+
+ <div class="divPanierInfo">
+   <div class="divinfo">
+     <div class="divLabel">
+      Sous total
+     </div>
+     <div class="divValeur">
+      {{(sousTotalProduit | number:'.2') + " €"}}
+     </div>
+   </div>
+   <div class="divinfo">
+    <div class="divLabel">
+      Commission
+    </div>
+    <div class="divValeur">
+     {{(commission | number:'.2') + " €"}}
+    </div>
+  </div>
+  <div class="divinfo">
+    <div class="divLabel">
+      Total
+    </div>
+    <div class="divValeur" style="font-weight: 800;">
+     {{(total | number:'.2') + " €"}}
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <button mat-raised-button color="accent" class="btnValidPanier" (click)='onClickValidCommande()'>COMMANDER</button>
+</div>
+</mat-card>

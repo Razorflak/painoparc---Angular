@@ -1,8 +1,35 @@
 .mainDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.qteProduit{
+  display: flex;
+  flex-direction: row;
 }
 
 .spanNbrProduit {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  min-width: 30px;
+  align-items: center;
+  min-width: 10px;
+}
+
+.nomProduit{
+  display: flex;
+  //white-space:nowrap;
+  font-size: smaller;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.sousTotal{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-left: 20px;
+  margin-right: 5px;
+  white-space:nowrap;
 }

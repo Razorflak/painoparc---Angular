@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { MaterialAngularModule } from './../../../material-angular/material-angular.module';
 import { NgModule } from '@angular/core';
@@ -11,6 +13,10 @@ import { ProduitQteDateLivraisonComponent } from './produit-qte-date-livraison/p
 import { CommerceCommandeCardComponent } from './commerce-commande-card/commerce-commande-card.component';
 import { PanierRecapMobilComponent } from './panier-recap-mobil/panier-recap-mobil.component';
 import { NavbarCommandeComponent } from './navbar-commande/navbar-commande.component';
+import { PanierValideCommandeComponent } from './panier-valide-commande/panier-valide-commande.component';
+import { CommandeExpanPanelComponent } from './commande-expan-panel/commande-expan-panel.component';
+import { NavBarProfilComponent } from './nav-bar-profil/nav-bar-profil.component';
+import { PanierSauvegardeComponent } from './panier-sauvegarde/panier-sauvegarde.component';
 
 
 @NgModule({
@@ -23,11 +29,17 @@ import { NavbarCommandeComponent } from './navbar-commande/navbar-commande.compo
     ProduitQteDateLivraisonComponent,
     CommerceCommandeCardComponent,
     PanierRecapMobilComponent,
-    NavbarCommandeComponent],
+    NavbarCommandeComponent,
+    PanierValideCommandeComponent,
+    CommandeExpanPanelComponent,
+    NavBarProfilComponent,
+    PanierSauvegardeComponent],
   imports: [
     CommonModule,
     MaterialAngularModule,
     NgImageSliderModule,
+    RouterModule,
+    FormsModule
   ],
   exports: [
     ProduitCommandeCardsComponent,
@@ -35,7 +47,12 @@ import { NavbarCommandeComponent } from './navbar-commande/navbar-commande.compo
     ProduitLivraisonCardComponent,
     CommerceCommandeCardComponent,
     PanierRecapMobilComponent,
-    NavbarCommandeComponent
+    NavbarCommandeComponent,
+    ProduitPanierComponent,
+    PanierValideCommandeComponent,
+    CommandeExpanPanelComponent,
+    NavBarProfilComponent,
+    PanierSauvegardeComponent
   ]
 })
 export class ComponentsModule { }

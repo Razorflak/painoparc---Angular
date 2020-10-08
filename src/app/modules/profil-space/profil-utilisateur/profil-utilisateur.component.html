@@ -1,0 +1,49 @@
+<div class="content">
+  <h2>Mon profil</h2>
+  <div class="rubrique">
+    <div class="rubrique_header">
+      <span>Codes d'accès</span>
+    </div>
+    <div class="rubrique_content">
+      <div>
+        <span class="rubrique_libelle">E-Mail</span>
+        <span class="rubrique_data">toto@gmail.com</span>
+      </div>
+      <button mat-icon-button (click)="onClickEdit('email')">
+        <mat-icon>edit_outline</mat-icon>
+      </button>
+    </div>
+    <div class="rubrique_content">
+      <div>
+        <span class="rubrique_libelle">Mot de passe</span>
+        <span>xxxxxxxxxxxxx</span>
+      </div>
+      <button mat-icon-button (click)="onClickEdit('password')">
+        <mat-icon>edit_outline</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="rubrique">
+    <div class="rubrique_header">
+      <span class="rubrique_data">Informations personnelles</span>
+    </div>
+    <div class="rubrique_content">
+      <div>
+        <span class="rubrique_libelle">M</span>
+        <span class="rubrique_data">TANGUY Julien</span>
+      </div>
+      <button mat-icon-button (click)="onClickEdit('name')">
+        <mat-icon>edit_outline</mat-icon>
+      </button>
+    </div>
+    <div class="rubrique_content">
+      <div>
+        <span class="rubrique_libelle">Date de naissance</span>
+        <span class="rubrique_data">25/10/1991</span>
+      </div>
+      <button mat-icon-button (click)="onClickEdit('birthday')">
+        <mat-icon>edit_outline</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-//Angular Material Components
+// Angular Material Components
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
@@ -69,7 +69,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatMenuModule
   ],
   exports: [
     MatCheckboxModule,
@@ -102,7 +103,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatMenuModule
   ]
 })
 export class MaterialAngularModule { }

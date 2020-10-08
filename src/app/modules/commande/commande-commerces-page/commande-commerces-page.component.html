@@ -1,0 +1,20 @@
+<div class="content" fxFill>
+  <ng-container *ngIf="lstCommerces!==undefined" >
+    <div class="divDateLivraison">
+      <mat-form-field appearance="outline">
+        <mat-label>Date de livraison</mat-label>
+        <input matInput [matDatepicker]="picker" (dateChange)="onDateChange('change', $event)"
+        [value]="dateLivraison">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker disabled="false"></mat-datepicker>
+      </mat-form-field>
+      <app-navbar-commande></app-navbar-commande>
+    </div>
+    <div class="divCommerce"  *ngFor="let commerce of lstCommerces">
+      <app-commerce-commande-card [commerce]="commerce"></app-commerce-commande-card>
+    </div>
+  </ng-container>
+</div>
+
+
+

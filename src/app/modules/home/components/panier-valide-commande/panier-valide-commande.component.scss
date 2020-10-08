@@ -1,0 +1,44 @@
+.mainCard{
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.btnValidPanier{
+  width: 100%;
+}
+
+.divPanierInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.divProduits h2{
+  margin-bottom: 0px;
+}
+
+.divinfo{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 40px;
+  font-size: larger;
+  justify-content: center;
+  align-items: center;
+}
+
+.divLabel{
+  width: 50%;
+  margin-left: 15px;
+}
+
+.divValeur{
+  width: 50%;
+  margin-left: 40px;
+  display: flex;
+  flex-direction: row-reverse;
+}

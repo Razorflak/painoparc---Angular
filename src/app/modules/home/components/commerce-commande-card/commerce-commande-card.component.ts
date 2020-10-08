@@ -26,7 +26,7 @@ export class CommerceCommandeCardComponent implements OnInit {
   }
 
   onClickVoirProduit(): void{
-    this.router.navigate(['/produit_commerce/' + this.commerce.id]);
+    this.router.navigate(['commande/produit_commerce/' + this.commerce.id]);
   }
 
 }

@@ -1,0 +1,29 @@
+<div class="content">
+    <div class="headerNavBar" (click)="onClickHeader()">
+      <a>Menu</a>
+      <span [ngClass]="{
+        'headerOpen': colapse,
+        'headerClose': !colapse
+      }">
+        <mat-icon>keyboard_arrow_up</mat-icon>
+      </span>
+    </div>
+    <div [ngClass]="{
+      'menuOpen': colapse,
+      'menuHide': !colapse,
+      'dropDownMenu': true
+    }">
+      <div  class="menuContent">
+        <ng-container *ngFor="let item of arrayMenu">
+          <a *ngFor="let menu of item" [routerLink]="[menu.path]" [ngClass]="{
+            'active': menu.active
+          }">{{menu.libelle}}</a>
+          <mat-divider></mat-divider>
+        </ng-container>
+        <div class="divBtnDeconnecter">
+          <button mat-raised-button color="warn" (click)="onClickDeconnexion()">Se déconnecter</button>
+        </div>
+      </div>
+    </div>
+
+</div>

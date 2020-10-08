@@ -1,17 +1,23 @@
 <div class="mainDiv">
-  <button mat-icon-button color="primary" (click)="onClickRemove()">
-    <mat-icon>remove_circle_outline</mat-icon>
-  </button>
-  <div class="spanNbrProduit">
-    <span >
-      {{produit.Panier_Produit.nbrProduit}}
+  <div class="qteProduit">
+    <button *ngIf="canModifQte"  mat-icon-button color="primary" (click)="onClickRemove()">
+      <mat-icon>remove_circle_outline</mat-icon>
+    </button>
+    <div class="spanNbrProduit">
+      <span *ngIf="!canModifQte" >x&nbsp;</span><span>{{produit.Panier_Produit.nbrProduit}}</span>
+    </div>
+    <button *ngIf="canModifQte" mat-icon-button color="primary" (click)="onClickAdd()">
+      <mat-icon>add_circle_outline</mat-icon>
+    </button>
+  </div>
+  <div class="nomProduit">
+    <span>
+      {{produit.nom}}
     </span>
   </div>
-  <button mat-icon-button color="primary" (click)="onClickAdd()">
-    <mat-icon>add_circle_outline</mat-icon>
-  </button>
-
-  <span>
-    {{produit.nom}}
-  </span>
+  <div class="sousTotal">
+    <span>
+      {{(produit.prix*produit.Panier_Produit.nbrProduit  | number:'.2') + ' €'}}
+    </span>
+  </div>
 </div>

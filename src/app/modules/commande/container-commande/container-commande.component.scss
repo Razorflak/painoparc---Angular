@@ -1,0 +1,73 @@
+.content{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 100%;
+}
+
+.component{
+  width: 100%;
+}
+
+.divPanier {
+  height: 100%;
+  display: flex;
+  position: fixed;
+  right: 0;
+  top: 64px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 32px;
+  padding-right: 32px;
+}
+
+//Component utilisé pour la page
+::ng-deep router-outlet.router-flex-commande + *
+{
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  z-index: 1;
+  padding-top: 32px;
+  margin-right: 332px;
+}
+
+
+app-panier-sauvegarde{
+  min-width: 300px;
+  padding-bottom: 16px;
+}
+
+app-panier-commande{
+  min-width: 300px;
+}
+
+.divProduit {
+  display: flex;
+  width: 100%;
+  margin: 16px;
+}
+
+@media (max-width : 770px) {
+  .divPanier {
+    width: 100%;
+    margin: 0px;
+    display: none;
+  }
+  app-panier-sauvegarde{
+    display: none;
+    width: 0%;
+    min-width: 0px;
+  }
+
+  app-panier-commande{
+    min-width: 300px;
+  }
+
+  ::ng-deep router-outlet.router-flex-commande + *
+{
+  min-width: 100%;
+}
+
+}

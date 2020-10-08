@@ -1,0 +1,34 @@
+<div class="container" [ngClass]="{
+  'container_open': !collapse,
+  'container_close': collapse,
+  'container': true
+}">
+    <div class="container_content">
+      <div class="header" (click)='onClickHeader()'>
+        <span>Sauvegarder le panier</span>
+      </div>
+      <div class="content">
+        <div class="content_cree">
+          <mat-form-field>
+            <mat-label>Créer un nouveau panier</mat-label>
+            <input matInput type="text" [(ngModel)]="nomPanier">
+            <button mat-button *ngIf="nomPanier" matSuffix mat-icon-button aria-label="Clear" (click)="nomPanier=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <span>ou</span>
+          <mat-form-field >
+            <mat-label>Remplacer</mat-label>
+            <mat-select [(value)]="selectedPanier">
+              <mat-option *ngFor="let panier of lstPaniersSave" [value]="panier">
+                {{panier.nom}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="btn_enrigistrer">
+            <button mat-raised-button color="accent" (click)="onClickEnregistrerPanier()" >Enregistrer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="content">
+  <ng-container *ngIf="commerce!==undefined" >
+    <div class="divLeftScreen">
+      <div class="divDateLivraison">
+        <mat-form-field appearance="outline">
+          <mat-label>Date de livraison</mat-label>
+          <input matInput [matDatepicker]="picker" (dateChange)="onDateChange('change', $event)"
+          [value]="dateLivraison">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker disabled="false"></mat-datepicker>
+        </mat-form-field>
+        <app-navbar-commande [commerce]="commerce" *ngIf="commerce" ></app-navbar-commande>
+      </div>
+      <mat-tab-group dynamicHeight>
+        <mat-tab *ngFor="let theme of lstThemes">
+          <ng-template mat-tab-label>{{theme.nom}}</ng-template>
+          <div class="divCategorie"  *ngFor="let categorie of theme.Categories">
+            <p>{{categorie.libelle}}</p>
+            <div class="divProduit" >
+              <app-produit-commande-cards *ngFor="let produit of categorie.Produits" [produit] = "produit"></app-produit-commande-cards>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+   </div>
+  </ng-container>
+</div>
+
+
+

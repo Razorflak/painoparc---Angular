@@ -1,0 +1,61 @@
+.container{
+  display: flex;
+  flex-direction: row;
+  margin: 32px;
+}
+
+//Component utilisé pour la page
+::ng-deep router-outlet.router-flex-profil + *
+{
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  z-index: 1;
+  max-width: 800px;
+  padding-top: 32px;
+}
+
+.divNavBar{
+  z-index: 1;
+  min-width: 350px;
+  margin-right: 32px;
+}
+
+
+.pageContainer{
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.img_background{
+  position: absolute;
+  z-index: 0;
+  max-height: 200px;
+  overflow: hidden;
+  margin: 0 16px 0 16px;
+  border-radius: 10px;
+  img {
+    width: 100%;
+    overflow: hidden;
+  }
+}
+
+
+//Mobil
+@media (max-width : 770px) {
+  .container{
+    flex-direction: column;
+    margin: 0px;
+  }
+
+  .divNavBar{
+    margin-right: 0px;
+  }
+
+  .img_background{
+    margin: 0 0 0 0;
+    border-radius: 0;
+  }
+}
