@@ -3,6 +3,7 @@ import { PanierSvcService } from './../../../../core/services/panier-svc.service
 import { IProduit } from './../../../../core/interfaces/IProduit';
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AppConfig } from 'src/app/config/app-config';
 
 export interface Tile {
   color: string;
@@ -22,9 +23,14 @@ export interface Tile {
 export class ProduitCommandeCardsComponent implements OnInit {
 
   constructor(private panierSvc: PanierSvcService,
-              private matDialog: MatDialog) { }
+              private matDialog: MatDialog,
+              private appConfig: AppConfig) { }
+
+  urlImage: string;
   @Input() produit: IProduit;
   ngOnInit(): void {
+    this.urlImage = this.appConfig.assetsURL + '/img/img_background/Bread1.jpg';
+    console.log(this.urlImage);
     if (this.produit.Panier_Produit == null){
       this.produit.Panier_Produit = {
         nbrProduit: 0,

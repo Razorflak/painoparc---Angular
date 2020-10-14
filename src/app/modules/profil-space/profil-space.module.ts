@@ -33,7 +33,8 @@ const routes: Routes = [
       {
         path: 'mes_commandes',
         component: HistoriqueCommandePageComponent,
-      },{
+      },
+      {
         path: 'mes_favoris',
         component: FavoriPanierPageComponent
       }

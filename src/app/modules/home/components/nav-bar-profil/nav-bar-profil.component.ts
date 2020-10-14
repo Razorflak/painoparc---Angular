@@ -1,6 +1,6 @@
 import { SessionService } from './../../../../core/services/session.service';
 import { NavigationEnd, Router, RouterEvent } from '@angular/router';
-import { ChangeDetectionStrategy, Component, HostListener, OnInit, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { filter, takeUntil } from 'rxjs/operators';
 import { fromEvent, Subject } from 'rxjs';
 
@@ -14,13 +14,12 @@ export class NavBarProfilComponent implements OnInit {
 
 
   constructor(private router: Router,
-              private sessionSvc: SessionService) {
+              private sessionSvc: SessionService,
+              private cd: ChangeDetectorRef) {
 
   }
-  destroy = new Subject();
-  destroy$ = this.destroy.asObservable();
 
-  colapse: boolean;
+  headerOpen: boolean;
   userTabBord: Array<any> = new Array(
     {libelle: 'Tableau de bord', path: '/profil/tableau_bord'}
   );
@@ -30,21 +29,20 @@ export class NavBarProfilComponent implements OnInit {
     {libelle: 'Favoris', path: '/profil/mes_favoris'},
   );
   commerceManagerMenuArray: Array<any> = new Array(
-    {libelle: 'Mon commerces', path: '/commerce/'},
-    {libelle: 'Mes produits', path: '/commerce/produits', active: true},
-    {libelle: 'Toto', path: '/commerce/produits'},
+    {libelle: 'Mon commerces', path: '/commerce'},
+    {libelle: 'Mes produits', path: '/commerce/produits'}
   );
   campingManagerMenuArray: Array<any> = new Array();
 
   arrayMenu: Array<any> = new Array();
   activeLibelle: string;
-
-  getYPosition(e: Event): number {
-    return (e.target as Element).scrollTop;
-  }
+  // gestion du scroll pour fermer le menu
+  transitionEnCours = false;
+  lastScrollTop = 0;
 
   ngOnInit(): void {
-    this.arrayMenu.push(this.userTabBord);
+    // Tableau de bord pour une futur évolution
+    // this.arrayMenu.push(this.userTabBord);
     this.arrayMenu.push(this.userMenuArray);
     this.arrayMenu.push(this.commerceManagerMenuArray);
     this.setMenuPathActive();
@@ -54,11 +52,32 @@ export class NavBarProfilComponent implements OnInit {
       filter(e => e instanceof NavigationEnd)
     ).subscribe((e: RouterEvent) => {
       this.setMenuPathActive(e.url);
+      this.headerOpen = false;
     });
+    window.addEventListener('scroll', this.scroll, true);
   }
 
-  onClickMenu(path): void{
-    console.log(path);
+  scroll = (event: any): void => {
+    const st = event.srcElement.scrollTop;
+    if ( this.lastScrollTop < st && !this.transitionEnCours){
+      this.lastScrollTop = st;
+      this.headerOpen = false;
+      this.cd.detectChanges();
+    }
+    this.lastScrollTop = st;
+  }
+
+  onTransitionStart(): void{
+    this.transitionEnCours = true;
+  }
+
+  onTransitionEnd(): void{
+    this.transitionEnCours = false;
+    this.lastScrollTop = 99999999;
+  }
+
+  onClickHeader(): void{
+    this.headerOpen = !this.headerOpen;
   }
 
   setMenuPathActive(path = null): void{
@@ -77,9 +96,7 @@ export class NavBarProfilComponent implements OnInit {
 
 
 
-  onClickHeader(): void{
-    this.colapse = !this.colapse;
-  }
+
 
   onClickDeconnexion(): void {
     this.sessionSvc.deconnexion();

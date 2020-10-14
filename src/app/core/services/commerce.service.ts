@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { SessionService } from './session.service';
 import { AppConfig } from 'src/app/config/app-config';
 import { HttpClient } from '@angular/common/http';
@@ -26,5 +27,27 @@ export class CommerceService {
       headers: this.sessionSvc.initHttpOption()
     }).toPromise();
     return lstProduit;
+  }
+
+  uploadImgCommerce(files: Array<File>, idCommerce): Observable<object>{
+    const url: string = this.appConfig.apiURL + '/commerce/uploadImgCommerce';
+    const formData: any = new FormData();
+    for (const file of files){
+      formData.append('file', file, file.name);
+    }
+    formData.append('idCommerce', idCommerce);
+    return this.httpClient.post(url, formData, {
+      headers: this.sessionSvc.initHttpOption(2),
+      reportProgress: true,
+      responseType: 'json'
+    });
+  }
+
+  getLstImageByCommerce(idCommerce: string): Promise<Array<string>> {
+    const url: string = this.appConfig.apiURL + '/commerce/lstImagesMiniatureCommerce';
+    return this.httpClient.get<Array<string>>(url,
+      {
+        headers: this.sessionSvc.initHttpOption(0)
+      }).toPromise();
   }
 }

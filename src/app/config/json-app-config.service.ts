@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import{ HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { AppConfig } from './app-config';
 
 @Injectable({
@@ -17,6 +17,7 @@ export class JsonAppConfigService extends AppConfig {
       .toPromise()
       .then(data => {
         this.apiURL = data.apiURL;
+        this.assetsURL = data.assetsURL;
       })
       .catch(() => {
         console.log('Erreur de chargement du fichier de configuration');

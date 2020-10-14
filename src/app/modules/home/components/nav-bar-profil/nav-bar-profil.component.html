@@ -2,15 +2,15 @@
     <div class="headerNavBar" (click)="onClickHeader()">
       <a>Menu</a>
       <span [ngClass]="{
-        'headerOpen': colapse,
-        'headerClose': !colapse
+        'headerOpen': headerOpen,
+        'headerClose': !headerOpen
       }">
         <mat-icon>keyboard_arrow_up</mat-icon>
       </span>
     </div>
-    <div [ngClass]="{
-      'menuOpen': colapse,
-      'menuHide': !colapse,
+    <div (transitionend)="onTransitionEnd()" (transitionstart)="onTransitionStart()" [ngClass]="{
+      'menuOpen': headerOpen,
+      'menuHide': !headerOpen,
       'dropDownMenu': true
     }">
       <div  class="menuContent">

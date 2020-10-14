@@ -54,7 +54,11 @@ export class SessionService {
     /**
      * Fonction de génération du header pour les requête vers l'api
      */
-  initHttpOption(isForm: boolean = false): HttpHeaders {
+  /**
+   * Initialisation du header pour le token et le type de données
+   * @param typeData information pour le header, 0 = JSON, 1 = x-www-form-urlencoded, 2= pas besoin de préciser
+   */
+  initHttpOption(typeData: number = 0): HttpHeaders {
     let token = this.token;
     if (token === undefined){
       token = this.cookieSvr.get('token');
@@ -64,9 +68,10 @@ export class SessionService {
     let header = new HttpHeaders();
     // header.append('Content-Type', 'application/json');
     header = header.append('Authorization', 'Bearer ' + token);
-    if (isForm){
+    console.log(typeData);
+    if (typeData === 1){
       header = header.append('Content-Type', 'application/x-www-form-urlencoded');
-    }else{
+    }else if (typeData === 0){
       header = header.append('Content-Type',  'application/json');
     }
     console.log(header.get('Authorization'));

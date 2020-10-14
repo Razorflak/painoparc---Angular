@@ -19,7 +19,12 @@ const routes: Routes = [
   {
     path: 'profil',
     loadChildren: () => import('./modules/profil-space/profil-space.module').then(m => m.ProfilSpaceModule)
+  },
+  {
+    path: 'commerce',
+    loadChildren: () => import('./modules/commerce/commerce.module').then(m => m.CommerceModule)
   }
+
 
 ];
 

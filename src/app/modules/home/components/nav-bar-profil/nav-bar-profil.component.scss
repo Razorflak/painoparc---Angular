@@ -1,4 +1,5 @@
 .content{
+  display: flex;
   background-color: #FFFFFF;
   color: #FFFFFF;
   padding: 32px;
@@ -10,7 +11,6 @@
   display: none;
   color: #2B3336;
   font-size: 18px;
-  padding: 8px;
 }
 
 
@@ -78,11 +78,34 @@ mat-divider{
 }
 
 @media (max-width : 770px) {
+
+  .content{
+    flex-direction: column;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 0px;
+    width: 100%;
+  }
+
+  .menuContent{
+    width: 100%;
+    margin: 0 0 0 0;
+  }
+
+  .menuContent a{
+    margin-left: 16px;
+  }
+
   .headerNavBar{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding: 0px;
+    margin: 0px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .headerOpen{
@@ -90,14 +113,13 @@ mat-divider{
     transform: rotate(180deg);
     transition-property: transform;
     transition-duration: 0.2s;
-    transition-timing-function: ease-out;
+
   }
 
   .headerClose{
     color: #2B3336;
     transition-property: transform;
     transition-duration: 0.2s;
-    transition-timing-function: ease-out;
   }
 
   .dropDownMenu{
@@ -119,16 +141,7 @@ mat-divider{
     max-height: 0px;
   }
 
-  .content{
-    padding: 0px;
-    border-radius: 0px;
-  }
 
-  .menuContent{
-    width: 100%;
-    margin: 0 0 0 0;
-
-  }
 
   .divBtnDeconnecter{
     margin-bottom: 16px;

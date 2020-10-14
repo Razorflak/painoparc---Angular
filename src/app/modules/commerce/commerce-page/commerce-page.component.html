@@ -1,0 +1,66 @@
+<div class="content">
+  <form [formGroup]="commerceForm" (ngSubmit)="onSubmit()" class="formContent">
+    <!--nom du commerce-->
+    <mat-form-field>
+      <input type="text" matInput placeholder="Nom" formControlName="nomCommerce">
+      <mat-error *ngIf="commerceForm.get('nomCommerce').hasError('required')">
+        <strong>Champ obligatoire</strong>
+      </mat-error>
+    </mat-form-field>
+    <!--email-->
+    <mat-form-field>
+      <input type="text" matInput placeholder="E-mail" formControlName="emailCommande">
+      <mat-error *ngIf="commerceForm.get('emailCommande').hasError('email') && !commerceForm.hasError('required')">
+        Veuillez entrer une adresse mail valide
+      </mat-error>
+      <mat-error *ngIf="commerceForm.get('emailCommande').hasError('required')">
+        L'adresse mail est <strong>obligatoire</strong>
+      </mat-error>
+    </mat-form-field>
+    <!--adresse-->
+    <!--Num Voie-->
+    <mat-form-field>
+      <input type="text" matInput placeholder="Numéro de voie" formControlName="numeroVoie">
+      <mat-error *ngIf="commerceForm.get('numeroVoie').hasError('required')">
+        <strong>Champ obligatoire</strong>
+      </mat-error>
+    </mat-form-field>
+    <!--libelle Voie-->
+    <mat-form-field>
+      <input type="text" matInput placeholder="Libellé de la voie" formControlName="libelleVoie">
+      <mat-error *ngIf="commerceForm.get('libelleVoie').hasError('required')">
+        <strong>Champ obligatoire</strong>
+      </mat-error>
+    </mat-form-field>
+    <!--Bp-->
+    <mat-form-field>
+      <input type="text" matInput placeholder="BP" formControlName="BP">
+    </mat-form-field>
+    <!--Code Postal-->
+    <mat-form-field>
+      <input type="text" matInput placeholder="Code postal" formControlName="codePostal">
+      <mat-error *ngIf="commerceForm.get('codePostal').hasError('required')">
+        <strong>Champ obligatoire</strong>
+      </mat-error>
+    </mat-form-field>
+    <!--Commune-->
+    <mat-form-field>
+      <input type="text" matInput placeholder="Commune" formControlName="commune">
+      <mat-error *ngIf="commerceForm.get('commune').hasError('required')">
+        <strong>Champ obligatoire</strong>
+      </mat-error>
+    </mat-form-field>
+    <!--Pays-->
+    <mat-form-field>
+      <input type="text" matInput placeholder="Pays" formControlName="pays">
+      <mat-error *ngIf="commerceForm.get('pays').hasError('required')">
+        <strong>Champ obligatoire</strong>
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit">Valider</button>
+  </form>
+
+  <!--Upload d'image-->
+  <input type="file" (change)="fileChange($event)" title="Fais péter !">
+  <button mat-raised-button color="warn" (click)='upload()'>Upload !</button>
+</div>
