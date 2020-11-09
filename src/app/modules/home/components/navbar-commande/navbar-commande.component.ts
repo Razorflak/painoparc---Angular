@@ -15,11 +15,12 @@ export class NavbarCommandeComponent implements OnInit {
   displayCommerceNom: boolean;
 
   ngOnInit(): void {
-    this.displayCommerceNom = this.commerce === undefined;
   }
 
   onClickBackToCommerce(): void{
+    console.log(this.commerce);
     this.router.navigate(['/commande']);
+
   }
 
 }

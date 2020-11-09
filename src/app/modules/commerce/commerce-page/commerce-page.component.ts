@@ -1,3 +1,4 @@
+import { AppConfig } from 'src/app/config/app-config';
 import { HttpClient } from '@angular/common/http';
 import { ICommerce } from './../../../core/interfaces/ICommerce';
 import { CommerceService } from './../../../core/services/commerce.service';
@@ -12,7 +13,8 @@ import { Component, OnInit } from '@angular/core';
 export class CommercePageComponent implements OnInit {
 
   constructor(private commerceSvc: CommerceService,
-              private http: HttpClient) { }
+              private http: HttpClient,
+              private appConfig: AppConfig) { }
 
   commerceForm: FormGroup = new FormGroup({
     nomCommerce: new FormControl('', [
@@ -62,7 +64,13 @@ export class CommercePageComponent implements OnInit {
       this.commerceForm.controls.codePostal.setValue(this.commerce.codePostal);
       this.commerceForm.controls.commune.setValue(this.commerce.commune);
       this.commerceForm.controls.pays.setValue(this.commerce.pays);
+
+      // Chargement des images du commerce
+      // Fait ici car faut bien que le commerce soir chargé !
+      this.getLstImageCommerce();
+
     });
+
   }
 
   onSubmit(): void {
@@ -71,8 +79,6 @@ export class CommercePageComponent implements OnInit {
       console.log(this.commerceForm.invalid.valueOf());
       return;
     }
-    console.log(this.commerceForm.value);
-    this.getLstImageCommerce();
   }
 
   fileChange(event): void{
@@ -84,14 +90,20 @@ export class CommercePageComponent implements OnInit {
     const files: Array<File> = this.filesToUpload;
     console.log(files);
     this.commerceSvc.uploadImgCommerce(this.filesToUpload, this.commerce.id).subscribe(result => {
+      console.log('result de lupload');
       console.log(result);
+      this.getLstImageCommerce();
     });
   }
 
   getLstImageCommerce(): void{
-    this.commerceSvc.getLstImageByCommerce('1').then( result => {
-      console.log(result);
-      this.lstPathImgCommerce = result;
+    this.commerceSvc.getLstImageByCommerce(this.commerce.id.toString()).then( result => {
+      this.lstPathImgCommerce = new Array();
+      result.forEach(fileName => {
+        const fullPath = this.appConfig.assetsURL + `/img/commerce/${this.commerce.id}/${fileName}`;
+        console.log(fullPath);
+        this.lstPathImgCommerce.push(fullPath);
+      });
     });
   }
 

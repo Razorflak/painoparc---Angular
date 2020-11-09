@@ -17,6 +17,7 @@ import { PanierValideCommandeComponent } from './panier-valide-commande/panier-v
 import { CommandeExpanPanelComponent } from './commande-expan-panel/commande-expan-panel.component';
 import { NavBarProfilComponent } from './nav-bar-profil/nav-bar-profil.component';
 import { PanierSauvegardeComponent } from './panier-sauvegarde/panier-sauvegarde.component';
+import { CarrouselFolderImgComponent } from './carrousel-folder-img/carrousel-folder-img.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { PanierSauvegardeComponent } from './panier-sauvegarde/panier-sauvegarde
     PanierValideCommandeComponent,
     CommandeExpanPanelComponent,
     NavBarProfilComponent,
-    PanierSauvegardeComponent],
+    PanierSauvegardeComponent,
+    CarrouselFolderImgComponent],
   imports: [
     CommonModule,
     MaterialAngularModule,
@@ -52,7 +54,8 @@ import { PanierSauvegardeComponent } from './panier-sauvegarde/panier-sauvegarde
     PanierValideCommandeComponent,
     CommandeExpanPanelComponent,
     NavBarProfilComponent,
-    PanierSauvegardeComponent
+    PanierSauvegardeComponent,
+    CarrouselFolderImgComponent
   ]
 })
 export class ComponentsModule { }

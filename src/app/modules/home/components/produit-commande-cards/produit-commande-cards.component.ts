@@ -29,7 +29,7 @@ export class ProduitCommandeCardsComponent implements OnInit {
   urlImage: string;
   @Input() produit: IProduit;
   ngOnInit(): void {
-    this.urlImage = this.appConfig.assetsURL + '/img/img_background/Bread1.jpg';
+    this.urlImage = this.appConfig.assetsURL + `/img/produit/${this.produit.id.toString()}/main.jpg`;
     console.log(this.urlImage);
     if (this.produit.Panier_Produit == null){
       this.produit.Panier_Produit = {
