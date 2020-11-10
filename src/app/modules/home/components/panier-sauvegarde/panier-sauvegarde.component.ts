@@ -49,8 +49,6 @@ export class PanierSauvegardeComponent implements OnInit {
   }
 
   onClickEnregistrerPanier(): void {
-    console.log(this.selectedPanier);
-    console.log(this.nomPanier);
   }
 
 }

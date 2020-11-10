@@ -72,7 +72,6 @@ export class ProduitDisplayDetailsComponent implements OnInit {
 
   async loadHttpProduit(): Promise<IProduit> {
     const url: string = this.appConfig.apiURL + '/produit/' + this.idProduit.toString();
-    console.log(url);
     const result: IProduit = await this.httpClient.get<IProduit>(url, {
       headers: this.sessionSvc.initHttpOption()
     }).toPromise();
@@ -81,7 +80,6 @@ export class ProduitDisplayDetailsComponent implements OnInit {
 
   async loadHttpProduitImg(img: string): Promise<string> {
     const url: string = this.appConfig.apiURL + '/produit/getImage/' + img;
-    console.log(url);
     const result: string = await this.httpClient.get<string>(url, {
       headers: this.sessionSvc.initHttpOption()
     }).toPromise();

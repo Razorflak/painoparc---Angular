@@ -64,6 +64,6 @@
   <input type="file" (change)="fileChange($event)" title="Fais péter !">
   <button mat-raised-button color="warn" (click)='upload()'>Upload !</button>
 
-  <app-carrousel-folder-img *ngIf="lstPathImgCommerce" [lstPathImg]="lstPathImgCommerce"></app-carrousel-folder-img>
+  <app-carrousel-folder-img *ngIf="lstPathImgCommerce" [lstPathImg]="lstPathImgCommerce" (needRefresh) = "needRefresh($event)"></app-carrousel-folder-img>
 
 </div>

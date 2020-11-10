@@ -1,3 +1,24 @@
-<div class="galerie_image">
-  <img *ngFor="let item of lstPathImg" src="{{item}}"/>
+<div class="galerie_image" >
+  <button mat-icon-button aria-label="" (click)="onClickPreviousImg()" >
+    <mat-icon>skip_previous</mat-icon>
+  </button>
+  <div class="fixed__container" #fixedContainer>
+    <div class="img__container" #parent>
+      <div class="img__wrapper" *ngFor="let item of lstPathImg">
+        <button mat-icon-button class="delete__button" color="warn" aria-label="" (click)="onClickDeleteImg(item)" >
+          <mat-icon>remove_circle</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" [ngClass]="{'star__button' : !getIsMain(item),
+                                                            'mainStar__button': getIsMain(item)}"
+                                                            aria-label="" (click)="onClickSetMainImg(item)" >
+          <mat-icon>{{getIsMain(item)?'star':'star_border'}}</mat-icon>
+        </button>
+        <img src="{{item}}"/>
+      </div>
+    </div>
+  </div>
+
+  <button mat-icon-button aria-label="" (click)="onClickNextImg()">
+    <mat-icon>skip_next</mat-icon>
+  </button>
 </div>

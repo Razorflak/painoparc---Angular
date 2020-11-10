@@ -52,12 +52,9 @@ export class RegisterPageComponent implements OnInit {
 
   submit(): void{
     if (this.userForm.invalid){
-      console.log('ERREUR !');
       return;
     }
 
-    console.log('submit');
-    console.log(this.userForm.value.email);
     const userInfo = {
       user: {
         email: this.userForm.value.email,

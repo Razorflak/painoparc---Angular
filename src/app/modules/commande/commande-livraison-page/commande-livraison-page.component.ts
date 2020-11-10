@@ -23,7 +23,6 @@ export class CommandeLivraisonPageComponent implements OnInit {
         const delai = element.delaiProduction === undefined ? 1 : element.delaiProduction;
         element.dateLivraisonPossible.setDate( element.dateLivraisonPossible.getDate() + delai );
         element.dateLivraison = element.dateLivraisonPossible;
-        console.log(element.dateLivraisonPossible);
       }
     });
     this.panier = this.panierSvc.lstProduitPanier;

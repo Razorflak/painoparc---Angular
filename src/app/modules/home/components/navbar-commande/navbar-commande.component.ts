@@ -18,7 +18,6 @@ export class NavbarCommandeComponent implements OnInit {
   }
 
   onClickBackToCommerce(): void{
-    console.log(this.commerce);
     this.router.navigate(['/commande']);
 
   }

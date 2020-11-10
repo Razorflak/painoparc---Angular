@@ -19,7 +19,6 @@ export class CommerceService {
    */
   async loadHttpLstCommerceUser(): Promise<ICommerce[]> {
     const url: string = this.appConfig.apiURL + '/commerce/getCommerceUser';
-    console.log(url);
     /*const httpOptions = {
       headers: this.sessionSvc.initHttpOption()
     }*/
@@ -29,7 +28,7 @@ export class CommerceService {
     return lstProduit;
   }
 
-  uploadImgCommerce(files: Array<File>, idCommerce): Observable<object>{
+  uploadImgCommerce(files: Array<File>, idCommerce): Observable<any>{
     const url: string = this.appConfig.apiURL + '/commerce/uploadImgCommerce';
     const formData: any = new FormData();
     for (const file of files){
@@ -50,4 +49,26 @@ export class CommerceService {
         headers: this.sessionSvc.initHttpOption(0)
       }).toPromise();
   }
+
+  setMainImgCommerce(imgPath: string): Promise<any>{
+    imgPath = imgPath.replace(this.appConfig.assetsURL, '');
+    const url: string = this.appConfig.apiURL + '/commerce/setMainImg';
+    return this.httpClient.post(url, {path: imgPath},
+      {
+        headers: this.sessionSvc.initHttpOption()
+      }
+    ).toPromise();
+  }
+
+  deleteImgCommerce(imgPath: string): Promise<any>{
+    // histoire de faire plus propre on retire quand même la racine
+    imgPath = imgPath.replace(this.appConfig.assetsURL, '');
+    const url = `${this.appConfig.apiURL}/commerce/deleteImg/?path=${imgPath}`;
+    return this.httpClient.delete(url,
+      {
+        headers: this.sessionSvc.initHttpOption(1),
+      }
+    ).toPromise();
+  }
+
 }

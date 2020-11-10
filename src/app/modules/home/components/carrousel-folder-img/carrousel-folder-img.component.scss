@@ -1,8 +1,70 @@
 .galerie_image{
   display: flex;
   flex-direction: row;
+  overflow: hidden;
+  max-width: 100%;
+  align-items: center;
+}
+.fixed__container{
+  display: flex;
+  max-width: 100%;
+  overflow: hidden;
+}
+.img__container{
+  display: flex;
+  flex-direction: row;
+  transition: transform 0.5s ease;
+  align-items: center;
 }
 
-.galerie_image img{
-  height: 100%;
+.img__wrapper{
+  position: relative;
+  transition: transform .2s;
+}
+
+.img__wrapper:hover > .delete__button{
+  visibility: visible;
+  display: block;
+}
+.img__wrapper:hover > .star__button{
+  visibility: visible;
+  display: block;
+}
+
+.img__wrapper:hover {
+  transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  z-index: 10;
+}
+
+.delete__button{
+  position: absolute;
+  visibility: hidden;
+  top: 0;
+  right: 10px;
+}
+
+.star__button{
+  position: absolute;
+  visibility: hidden;
+  display: none;
+  bottom: 10px;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mainStar__button{
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img__wrapper img{
+  margin: 0 10px 0 10px;
+  height: fit-content;
+  width: 200px;
 }

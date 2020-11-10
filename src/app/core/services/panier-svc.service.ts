@@ -42,7 +42,6 @@ export class PanierSvcService {
       }
     }else{
       this.dateLivraisonSvc = tomorrow;
-      console.log(this.dateLivraisonSvc);
     }
     if (lstProduitLS){
       this.lstProduit = lstProduitLS;
@@ -80,7 +79,6 @@ export class PanierSvcService {
    */
   async loadHttpLstProduitCommandableByCommerce(idCommerce: number): Promise<any> {
     const url: string = this.appConfig.apiURL + '/produit/ProduitByCommerce';
-    console.log(url);
     /*const httpOptions = {
       headers: this.sessionSvc.initHttpOption()
     }*/
@@ -196,8 +194,6 @@ export class PanierSvcService {
         }
       });
     } catch (error) {
-      console.log('Erreur de mise à jour du panier avec le cookie');
-      console.log(error);
     }
 
   }

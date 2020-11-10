@@ -20,7 +20,7 @@ export class JsonAppConfigService extends AppConfig {
         this.assetsURL = data.assetsURL;
       })
       .catch(() => {
-        console.log('Erreur de chargement du fichier de configuration');
+        //console.log('Erreur de chargement du fichier de configuration');
       });
   }
 }

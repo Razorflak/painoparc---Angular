@@ -18,18 +18,15 @@ export class RegisterSvcService {
 
   register(user): void{
     const url: string = this.appConfig.apiURL + '/auth/register';
-    console.log(url);
     const resultHttp: Observable<any> = this.httpClient.post(url, user);
     resultHttp.subscribe(data => {
       this.router.navigate(['']);
   },
     err => {
       // Remonté de l'erreur à l'écran pour gestion (500,401)
-      console.log('errir!');
       throw err;
     },
     () => {
-      console.log('complet!');
     });
   }
 

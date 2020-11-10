@@ -10,6 +10,5 @@ export class AppComponent {
   title = 'painoparc';
   constructor(private appConfig: AppConfig){
     this.title = 'TOTO';
-    console.log(appConfig.apiURL);
   }
 }

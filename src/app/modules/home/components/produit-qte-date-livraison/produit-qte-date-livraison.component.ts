@@ -22,7 +22,6 @@ export class ProduitQteDateLivraisonComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
-    console.log('produit: ' + this.produit.nom + ' date: ' + this.produit.dateLivraison);
   }
 
   onDateChange(type: string, event: MatDatepickerInputEvent<Date>): void {

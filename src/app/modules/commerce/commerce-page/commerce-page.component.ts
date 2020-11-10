@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ICommerce } from './../../../core/interfaces/ICommerce';
 import { CommerceService } from './../../../core/services/commerce.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-commerce-page',
@@ -14,7 +14,8 @@ export class CommercePageComponent implements OnInit {
 
   constructor(private commerceSvc: CommerceService,
               private http: HttpClient,
-              private appConfig: AppConfig) { }
+              private appConfig: AppConfig,
+              private cd: ChangeDetectorRef) { }
 
   commerceForm: FormGroup = new FormGroup({
     nomCommerce: new FormControl('', [
@@ -75,24 +76,20 @@ export class CommercePageComponent implements OnInit {
 
   onSubmit(): void {
     if (this.commerceForm.invalid){
-      console.log(this.commerceForm.errors);
-      console.log(this.commerceForm.invalid.valueOf());
       return;
     }
   }
 
   fileChange(event): void{
-    console.log(event);
     this.filesToUpload = event.target.files;
   }
 
   upload(): void {
     const files: Array<File> = this.filesToUpload;
-    console.log(files);
     this.commerceSvc.uploadImgCommerce(this.filesToUpload, this.commerce.id).subscribe(result => {
-      console.log('result de lupload');
-      console.log(result);
-      this.getLstImageCommerce();
+      this.lstPathImgCommerce = (result.filesCommerce as Array<string>).map(file => this.appConfig.assetsURL + `/img/commerce/${this.commerce.id}/${file}`);
+      this.lstPathImgCommerce.sort(); // le main va se trouver à la fin;
+      this.lstPathImgCommerce.reverse();
     });
   }
 
@@ -100,11 +97,21 @@ export class CommercePageComponent implements OnInit {
     this.commerceSvc.getLstImageByCommerce(this.commerce.id.toString()).then( result => {
       this.lstPathImgCommerce = new Array();
       result.forEach(fileName => {
-        const fullPath = this.appConfig.assetsURL + `/img/commerce/${this.commerce.id}/${fileName}`;
-        console.log(fullPath);
+        let fullPath = this.appConfig.assetsURL + `/img/commerce/${this.commerce.id}/${fileName}`;
+        if (fileName.indexOf('main') === 0){
+          fullPath += `?dummy=${Date.now()}`;
+        }
         this.lstPathImgCommerce.push(fullPath);
       });
+      // Sort pour mettre toujours le main.jpg en premier
+      this.lstPathImgCommerce.sort(); // le main va se trouver à la fin;
+      this.lstPathImgCommerce.reverse();
     });
+  }
+
+  needRefresh(event): void{
+    this.getLstImageCommerce();
+    this.cd.detectChanges();
   }
 
 }

@@ -64,17 +64,14 @@ export class SessionService {
       token = this.cookieSvr.get('token');
       this._token = token;
     }
-    console.log('Bearer ' + this.token);
     let header = new HttpHeaders();
     // header.append('Content-Type', 'application/json');
     header = header.append('Authorization', 'Bearer ' + token);
-    console.log(typeData);
     if (typeData === 1){
       header = header.append('Content-Type', 'application/x-www-form-urlencoded');
     }else if (typeData === 0){
       header = header.append('Content-Type',  'application/json');
     }
-    console.log(header.get('Authorization'));
     const httpOptions = {
       headers: header
     };
