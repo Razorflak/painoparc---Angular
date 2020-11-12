@@ -10,7 +10,7 @@ export interface IProduit{
   description: string;
   prix: number;
   stock: number;
-  commission: number;
+  commission?: number;
   isAvailable: boolean;
   delaiProduction: number;
   imgFileName?: string[];

@@ -1,1 +1,51 @@
-<p>produit-add-page works!</p>
+<div class="content">
+  <form [formGroup]="produitForm" (ngSubmit)="onSubmit()" class="formContent">
+    <!--nom du produit-->
+    <mat-form-field>
+      <input type="text" matInput placeholder="Nom" formControlName="nom">
+      <mat-error *ngIf="produitForm.get('nom').hasError('required')">
+        <strong>Champ obligatoire</strong>
+      </mat-error>
+    </mat-form-field>
+    <!--description-->
+    <mat-form-field>
+      <textarea matInput placeholder="Description" formControlName="decription"></textarea>
+      <mat-error *ngIf="produitForm.get('decription').hasError('required')">
+        <strong>Champ obligatoire</strong>
+      </mat-error>
+    </mat-form-field>
+    <!--prix-->
+    <mat-form-field>
+      <input type="number" matInput placeholder="Description" formControlName="prix">
+      <mat-error *ngIf="produitForm.get('prix').hasError('required')">
+        <strong>Champ obligatoire</strong>
+      </mat-error>
+    </mat-form-field>
+    <!--Stock-->
+    <mat-form-field>
+      <input type="number" matInput placeholder="Stock par jour" formControlName="stock">
+      <mat-error *ngIf="produitForm.get('stock').hasError('required')">
+        <strong>Champ obligatoire</strong>
+      </mat-error>
+    </mat-form-field>
+    <!--is Available-->
+    <mat-form-field>
+      <input type="checkbox" matInput placeholder="Est disponible" formControlName="isAvailable">
+      <mat-error *ngIf="produitForm.get('isAvailable').hasError('required')">
+        <strong>Champ obligatoire</strong>
+      </mat-error>
+    </mat-form-field>
+    <!--Delai de production // Mis de coté pour le moment-->
+    <!--<mat-form-field>
+      <input type="number" matInput placeholder="Délai de production" formControlName="delaiProduction">
+      <mat-error *ngIf="produitForm.get('delaiProduction').hasError('required')">
+        <strong>Champ obligatoire</strong>
+      </mat-error>
+    </mat-form-field>-->
+  </form>
+
+  <!--Upload d'image-->
+  <input type="file" (change)="fileChange($event)" title="Fais péter !">
+  <button mat-raised-button color="warn" (click)='upload()'>Upload !</button>
+  <app-carrousel-folder-img *ngIf="lstPathImgProduit" [lstPathImg]="lstPathImgProduit" (needRefresh) = "needRefresh($event)"></app-carrousel-folder-img>
+</div>
